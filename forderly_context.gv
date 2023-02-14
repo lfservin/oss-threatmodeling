@@ -75,7 +75,7 @@ digraph forderly_context {
     kiosk->forderly[label="Sends order/payment\ninfo\nRetrieves updates/\nconfig changes\n[HTTPS\nCertificate]"]
     printer->forderly[label="Polls for orders\n[HTTP\nGUID]"]
     forderly->payment[label="Sends CC details\nRetrieves transaction token\n[HTTPS/\nmTLS]"]
-    support->forderly[label="Manage machines\nin Network\n[SSH/\nssh key]"]
+    support->forderly[label="Manage machines\nin Network\n[SSH\nsupportuser/ssh key]"]
     /* Ranks */
     { rank=same; support forderly};
 }
