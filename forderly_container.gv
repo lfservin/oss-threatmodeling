@@ -12,11 +12,11 @@ digraph forderly_context {
         label=<<font point-size="16"><br />Customer Network</font><br /><font point-size="12">[Customer]</font>>
         labelloc=t
         kiosk [label=<
-        <table border="0" cellspacing="0" cellborder="0"  width="250" height="130" fixedsize="true">
+        <table border="0" cellspacing="0" cellborder="0"  width="250" height="170" fixedsize="true">
           <tr><td width="200" height="30" fixedsize="true" cellpadding="0" align="text"><FONT POINT-SIZE="20">Self-serve Kiosk</FONT></td >
           <td rowspan="2" width="50" height="60" fixedsize="true" cellpadding="0"><img scale="true" src="./images/kiosk.png"/></td></tr>
           <tr><td width="200" height="30" cellpadding="0" align="text"><FONT POINT-SIZE="10">[SELinux/SPA]</FONT></td></tr>
-          <tr><td colspan="2" width="250" height="70" fixedsize="true" cellpadding="0" align="text" balign="left"><FONT POINT-SIZE="14">Allows customer to browse menu, order,<br/>  and pay<br/>Phones home for fetching updates and<br/>  config updates</FONT></td></tr>
+          <tr><td colspan="2" width="250" height="100" fixedsize="true" cellpadding="0" align="text" balign="left"><FONT POINT-SIZE="14">Allows customer to browse menu, order,<br/>  and pay<br/>Phones home for fetching software<br/>  and config updates<br/>Stores RSA 2048 certificate created<br/>  during manufacturing<br/>Offers free-form text field for feedback</FONT></td></tr>
         </table>
         >]
 
@@ -24,7 +24,7 @@ digraph forderly_context {
         <table border="0" cellspacing="0" cellborder="0"  width="250" height="150" fixedsize="true">
           <tr><td width="200" height="30" fixedsize="true" cellpadding="0" align="text"><FONT POINT-SIZE="20">Administrator</FONT></td >
           <td rowspan="2" width="50" height="60" fixedsize="true" cellpadding="0"><img scale="true" src="./images/person.png"/></td></tr>
-          <tr><td width="200" height="30" cellpadding="0" align="text"><FONT POINT-SIZE="10">[Customer Employee]</FONT></td></tr>
+          <tr><td width="200" height="30" cellpadding="0" align="text"><FONT POINT-SIZE="10">[Angular SPA]</FONT></td></tr>
           <tr><td colspan="2" width="250" height="90" fixedsize="true" cellpadding="0" align="text" balign="left"><FONT POINT-SIZE="14">Accesses Admin Webportal to:<br/>  * Provision/Deprovision Kiosks<br/>  * Configure Kiosks<br/>  * Provision/Deporvision account users<br/>  * Configure menu items</FONT></td></tr>
         </table>
         >]
@@ -34,31 +34,62 @@ digraph forderly_context {
           <tr><td width="200" height="30" fixedsize="true" cellpadding="0" align="text"><FONT POINT-SIZE="20">Printer</FONT></td >
           <td rowspan="2" width="50" height="60" fixedsize="true" cellpadding="0"><img scale="true" src="./images/mini-printer.png"/></td></tr>
           <tr><td width="200" height="30" cellpadding="0" align="text"><FONT POINT-SIZE="10">[Mini Printer]</FONT></td></tr>
-          <tr><td colspan="2" width="250" height="40" fixedsize="true" cellpadding="0" align="text" balign="left"><FONT POINT-SIZE="14">Prints carbon-copy receipts to<br/>  kitchen-staff</FONT></td></tr>
+          <tr><td colspan="2" width="250" height="40" fixedsize="true" cellpadding="0" align="text" balign="left"><FONT POINT-SIZE="14">Prints carbon-copy receipts <br/>  with order number to  kitchen-staff</FONT></td></tr>
         </table>
         >]
     }
     subgraph cluster_forderly {
         style=dashed
-        label=<<font point-size="16"><br />Forderly Network</font><br /><font point-size="12">[SaaS]</font>>
+        label=<<font point-size="16"><br />Forderly Service</font><br /><font point-size="12">[SaaS]</font>>
         labelloc=t
-        forderly [label=<
+        spa [label=<
         <table border="0" cellspacing="0" cellborder="0"  width="250" height="100" fixedsize="true">
-          <tr><td width="200" height="30" fixedsize="true" cellpadding="0" align="text"><FONT POINT-SIZE="20">Forderly SaaS</FONT></td >
-          <td rowspan="2" width="50" height="60" fixedsize="true" cellpadding="0"><img scale="true" src="./images/server.png"/></td></tr>
-          <tr><td width="200" height="30" cellpadding="0" align="text"><FONT POINT-SIZE="10">[SaaS Solution]</FONT></td></tr>
-          <tr><td colspan="2" width="250" height="40" fixedsize="true" cellpadding="0" align="text" balign="left"><FONT POINT-SIZE="14">Serve SMB with a ready-to-use platform<br/>  for ordering and delivering food</FONT></td></tr>
+          <tr><td width="200" height="30" fixedsize="true" cellpadding="0" align="text"><FONT POINT-SIZE="20">SPA website</FONT></td >
+          <td rowspan="2" width="50" height="60" fixedsize="true" cellpadding="0"><img scale="true" src="./images/portal.png"/></td></tr>
+          <tr><td width="200" height="30" cellpadding="0" align="text"><FONT POINT-SIZE="10">[Static Website]</FONT></td></tr>
+          <tr><td colspan="2" width="250" height="40" fixedsize="true" cellpadding="0" align="text" balign="left"><FONT POINT-SIZE="14">Serves the images and javascript for<br/>  the admin portal</FONT></td></tr>
         </table>
         >]
         admin_api [label=<
-        <table border="0" cellspacing="0" cellborder="0"  width="250" height="100" fixedsize="true">
+        <table border="0" cellspacing="0" cellborder="0"  width="250" height="140" fixedsize="true">
           <tr><td width="200" height="30" fixedsize="true" cellpadding="0" align="text"><FONT POINT-SIZE="20">Admin API</FONT></td >
           <td rowspan="2" width="50" height="60" fixedsize="true" cellpadding="0"><img scale="true" src="./images/api.png"/></td></tr>
-          <tr><td width="200" height="30" cellpadding="0" align="text"><FONT POINT-SIZE="10">[REST API]</FONT></td></tr>
-          <tr><td colspan="2" width="250" height="40" fixedsize="true" cellpadding="0" align="text" balign="left"><FONT POINT-SIZE="14">Provides reports<br/></FONT></td></tr>
+          <tr><td width="200" height="30" cellpadding="0" align="text"><FONT POINT-SIZE="10">[REST API (Java)]</FONT></td></tr>
+          <tr><td colspan="2" width="250" height="80" fixedsize="true" cellpadding="0" align="text" balign="left"><FONT POINT-SIZE="14">Provides reports<br/>Offers configuration options for devices<br/>Offers user management options<br/>Hard-coded credentials to DB</FONT></td></tr>
         </table>
         >]
-        
+        order_api [label=<
+        <table border="0" cellspacing="0" cellborder="0"  width="250" height="130" fixedsize="true">
+          <tr><td width="200" height="30" fixedsize="true" cellpadding="0" align="text"><FONT POINT-SIZE="20">Order API</FONT></td >
+          <td rowspan="2" width="50" height="60" fixedsize="true" cellpadding="0"><img scale="true" src="./images/api.png"/></td></tr>
+          <tr><td width="200" height="30" cellpadding="0" align="text"><FONT POINT-SIZE="10">[REST API (Java)]</FONT></td></tr>
+          <tr><td colspan="2" width="250" height="70" fixedsize="true" cellpadding="0" align="text" balign="left"><FONT POINT-SIZE="14">Manages orders<br/>Forwards payment data for processing<br/>Stores DB credentials as plaintext</FONT></td></tr>
+        </table>
+        >]
+        payment_api [label=<
+        <table border="0" cellspacing="0" cellborder="0"  width="250" height="140" fixedsize="true">
+          <tr><td width="200" height="30" fixedsize="true" cellpadding="0" align="text"><FONT POINT-SIZE="20">Payment uService</FONT></td >
+          <td rowspan="2" width="50" height="60" fixedsize="true" cellpadding="0"><img scale="true" src="./images/api.png"/></td></tr>
+          <tr><td width="200" height="30" cellpadding="0" align="text"><FONT POINT-SIZE="10">[Java]</FONT></td></tr>
+          <tr><td colspan="2" width="250" height="80" fixedsize="true" cellpadding="0" align="text" balign="left"><FONT POINT-SIZE="14">Forwards payment data to payment<br/>  provider<br/>Retrieves token from payment provider<br/>Releases orter for delivery to printer</FONT></td></tr>
+        </table>
+        >]
+        db [label=<
+        <table border="0" cellspacing="0" cellborder="0"  width="250" height="100" fixedsize="true">
+          <tr><td width="200" height="30" fixedsize="true" cellpadding="0" align="text"><FONT POINT-SIZE="20">Database</FONT></td >
+          <td rowspan="2" width="50" height="60" fixedsize="true" cellpadding="0"><img scale="true" src="./images/database.png"/></td></tr>
+          <tr><td width="200" height="30" cellpadding="0" align="text"><FONT POINT-SIZE="10">[Postgresql 11.4]</FONT></td></tr>
+          <tr><td colspan="2" width="250" height="40" fixedsize="true" cellpadding="0" align="text" balign="left"><FONT POINT-SIZE="14">Stores order data</FONT></td></tr>
+        </table>
+        >]
+        jump_host [label=<
+        <table border="0" cellspacing="0" cellborder="0"  width="250" height="130" fixedsize="true">
+          <tr><td width="200" height="30" fixedsize="true" cellpadding="0" align="text"><FONT POINT-SIZE="20">Jump Host</FONT></td >
+          <td rowspan="2" width="50" height="60" fixedsize="true" cellpadding="0"><img scale="true" src="./images/host.png"/></td></tr>
+          <tr><td width="200" height="30" cellpadding="0" align="text"><FONT POINT-SIZE="10">[Linux?]</FONT></td></tr>
+          <tr><td colspan="2" width="250" height="70" fixedsize="true" cellpadding="0" align="text" balign="left"><FONT POINT-SIZE="14">Jump base towards the rest of the<br/>  infrastructure<br/>Stores credentials to all other servers!<br/>Open to the whole internet on port 22</FONT></td></tr>
+        </table>
+        >]
     }
     payment [color="#6b6b6b", fillcolor="#BFBFBF", fontcolor="#ffffff"label=<
     <table border="0" cellspacing="0" cellborder="0"  width="250" height="100" fixedsize="true">
@@ -79,11 +110,17 @@ digraph forderly_context {
     >]
 
     /* Relationships */
-    admin->forderly[label="Accesses to \nconfigure users,\nmanage devices\n[HTTPS\nusrname/pass]"]
-    kiosk->forderly[label="Sends order/payment\ninfo\nRetrieves updates/\nconfig changes\n[HTTPS\nCertificate]"]
-    printer->forderly[label="Polls for orders\n[HTTP\nGUID]"]
-    forderly->payment[label="Sends CC details\nRetrieves transaction token\n[HTTPS/\nmTLS]"]
-    support->forderly[label="Manage machines\nin Network\n[SSH/\nssh key]"]
+    admin->spa[label="Retrieves admin\nportal"]
+    admin->admin_api[label="Makes API calls\nto configure users,\nmanage devices\n[HTTPS\nusrname/pass]"]
+    kiosk->order_api[label="Sends order/\npayment\ninfo & \nfeedback\n[HTTPS\ncertificate]"]
+    kiosk->admin_api[label="Retrieves software binary/\nconfig changes\n[HTTPS\nCertificate]"]
+    printer->order_api[label="Polls for orders\nInforms order\nwas printed\n[HTTP\nGUID]"]
+    payment_api->payment[label="Sends CC details and amount\nRetrieves transaction token\n[HTTPS (TLS1.2)/\nmTLS]"]
+    support->jump_host[label="Connect to jump\nto the rest of the network\n[SSH\nsupportuser/ssh key]"]
+    order_api->payment_api[label="Passes payment info\nRetrieves payment token\n[HTTP/\nunauthenticated]"]
+    order_api->db[label="Writes kiosk\norder using\n tenantID\nStore payment token\nRelease order\nTCP/IP /\ncustom cipher\n[admin/pwd]"]
+    admin_api->db[label="[jdbc TLS1.2\nadmin/pwd]"]
+    //payment_api->db[label="Store payment token\nRelease order"]
     /* Ranks */
-    { rank=same; support forderly};
+   
 }
