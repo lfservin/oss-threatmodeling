@@ -20,5 +20,3 @@ Now that you're setup, here you can find the artifacts needed for the workshop:
 * All icons used for the diagram are located in [images](./images/)
 * [Report.md](Report.md) contains an exemplary report upon which we'll work during the workshop
 * The folder [msmtm](./mstmt/) contains files created using [Microsoft's Threat Modeling Tool](https://www.microsoft.com/en-us/securityengineering/sdl/threatmodeling)
-
-
