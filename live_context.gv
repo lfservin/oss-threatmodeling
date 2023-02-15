@@ -1,0 +1,30 @@
+digraph forderly_context {
+    label=<<br /><font point-size="34">Forderly Context Diagram</font>>
+    labelloc=tc
+    graph [fontname="Arial", rankdir=TB, ranksep=1.0, nodesep=1.0]
+    node[fontname="Arial", shape="plaintext", style=filled, fontcolor="#ffffff", color="#0b4884", fillcolor="#1168bd"]
+    edge [fontname="Arial"]
+
+    /* Entities */
+    kiosk [label=<
+    <table border="0" cellspacing="0" cellborder="0"  width="250" height="100" fixedsize="true">
+      <tr><td width="200" height="30" fixedsize="true" cellpadding="0" align="text"><FONT POINT-SIZE="20">Self-serve Kiosk</FONT></td >
+      <td rowspan="2" width="50" height="60" fixedsize="true" cellpadding="0"><img scale="true" src="./images/kiosk.png"/></td></tr>
+      <tr><td width="200" height="30" cellpadding="0" align="text"><FONT POINT-SIZE="10">[SELinux/Angular SPA]</FONT></td></tr>
+      <tr><td colspan="2" width="250" height="40" fixedsize="true" cellpadding="0" align="text" balign="left"><FONT POINT-SIZE="14">Allows guests to order, pay,<br/>and provide feedback</FONT></td></tr>
+    </table>
+    >]
+    order_api [label=<
+    <table border="0" cellspacing="0" cellborder="0"  width="250" height="100" fixedsize="true">
+      <tr><td width="200" height="30" fixedsize="true" cellpadding="0" align="text"><FONT POINT-SIZE="20">Order API</FONT></td >
+      <td rowspan="2" width="50" height="60" fixedsize="true" cellpadding="0"><img scale="true" src="./images/api.png"/></td></tr>
+      <tr><td width="200" height="30" cellpadding="0" align="text"><FONT POINT-SIZE="10">[Java WebService]</FONT></td></tr>
+      <tr><td colspan="2" width="250" height="40" fixedsize="true" cellpadding="0" align="text" balign="left"><FONT POINT-SIZE="14">Java Application which handles orders</FONT></td></tr>
+    </table>
+    >]
+
+    /* Relationships */
+    kiosk->order_api[label="calls API functions\n[HTTPS\nUses x509 certificates]"]
+
+    /* Ranks */
+}
