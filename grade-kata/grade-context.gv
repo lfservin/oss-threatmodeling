@@ -1,0 +1,73 @@
+digraph grade_context    {
+    label=<<br /><font point-size="34">Grading system context Diagram</font>>
+    labelloc=tc
+    graph [fontname="Arial", rankdir=TB, ranksep=1.0, nodesep=1.0]
+    node[fontname="Arial", shape="plaintext", style=filled, fontcolor="#ffffff",  fillcolor="#1274D6"]
+    edge [fontname="Arial", fontsize=11]
+
+    /* Entities */
+    subgraph cluster_AWS {
+        style=dashed
+        label=<<font point-size="16"><br />AWS</font><br /><font point-size="12">[CSP]</font>>
+        labelloc=bc
+        grading [label=<
+    <table border="0" cellspacing="0" cellborder="0" width="200" height="160" fixedsize="true">
+      <tr><td width="200" height="30" fixedsize="true" cellpadding="0" align="text"><FONT POINT-SIZE="20">Grading System</FONT></td></tr>
+      <tr><td width="200" height="30" cellpadding="0" align="text"><FONT POINT-SIZE="10">[SaaS]</FONT></td></tr>
+      <tr><td width="200" height="40" fixedsize="true" cellpadding="0" align="text" balign="left"><FONT POINT-SIZE="12">Standardized testing platform<br/>Serves exams to students<br/>Allows teachers to grade long-form<br/>  answers<br/>Povides quick results to multiple<br/>choice</FONT></td></tr>
+    </table>
+    >]
+    }
+
+    subgraph cluster_school {
+        style=dashed
+        label=<<font point-size="16"><br />Testing Center</font><br /><font point-size="12">[School]</font>>
+        labelloc=bc
+        student [label=<
+        <table border="0" cellspacing="0" cellborder="0"  width="250" height="100" fixedsize="true">
+          <tr><td width="200" height="30" fixedsize="true" cellpadding="0" align="text"><FONT POINT-SIZE="20">Student</FONT></td >
+          <td rowspan="2" width="50" height="60" fixedsize="true" cellpadding="0"><img scale="true" src="../images/person.png"/></td></tr>
+          <tr><td width="200" height="30" cellpadding="0" align="text"><FONT POINT-SIZE="10">[PC in computer lab]</FONT></td></tr>
+          <tr><td colspan="2" width="250" height="40" fixedsize="true" cellpadding="0" align="text" balign="left"><FONT POINT-SIZE="12">Student sitting to take an exam</FONT></td></tr>
+        </table>
+        >]
+        
+    }
+    subgraph cluster_out {
+        style=dashed
+        label=<<font point-size="16"><br />Testing Center B</font><br /><font point-size="12">[Not a school]</font>>
+        labelloc=bc
+        student_out [label=<
+        <table border="0" cellspacing="0" cellborder="0"  width="250" height="100" fixedsize="true">
+          <tr><td width="200" height="30" fixedsize="true" cellpadding="0" align="text"><FONT POINT-SIZE="20">Student</FONT></td >
+          <td rowspan="2" width="50" height="60" fixedsize="true" cellpadding="0"><img scale="true" src="../images/person.png"/></td></tr>
+          <tr><td width="200" height="30" cellpadding="0" align="text"><FONT POINT-SIZE="10">[PC in an unspecified location]</FONT></td></tr>
+          <tr><td colspan="2" width="250" height="40" fixedsize="true" cellpadding="0" align="text" balign="left"><FONT POINT-SIZE="12">Student sitting to take an exam</FONT></td></tr>
+        </table>
+        >]
+    }
+    
+    teacher [label=<
+    <table border="0" cellspacing="0" cellborder="0"  width="250" height="100" fixedsize="true">
+      <tr><td width="200" height="30" fixedsize="true" cellpadding="0" align="text"><FONT POINT-SIZE="20">Teacher</FONT></td >
+      <td rowspan="2" width="50" height="60" fixedsize="true" cellpadding="0"><img scale="true" src="../images/person.png"/></td></tr>
+      <tr><td width="200" height="30" cellpadding="0" align="text"><FONT POINT-SIZE="10">[Teacher/Grader]</FONT></td></tr>
+      <tr><td colspan="2" width="250" height="40" fixedsize="true" cellpadding="0" align="text" balign="left"><FONT POINT-SIZE="12">Grades long-form answers</FONT></td></tr>
+    </table>
+    >]
+
+    admin [label=<
+    <table border="0" cellspacing="0" cellborder="0"  width="250" height="100" fixedsize="true">
+      <tr><td width="200" height="30" fixedsize="true" cellpadding="0" align="text"><FONT POINT-SIZE="20">Admin</FONT></td >
+      <td rowspan="2" width="50" height="60" fixedsize="true" cellpadding="0"><img scale="true" src="../images/person.png"/></td></tr>
+      <tr><td width="200" height="30" cellpadding="0" align="text"><FONT POINT-SIZE="10">[school director]</FONT></td></tr>
+      <tr><td colspan="2" width="250" height="40" fixedsize="true" cellpadding="0" align="text" balign="left"><FONT POINT-SIZE="12">Admin the grading system for their school:<br/>Add teachers, students<br/>Get reports per class, school<br/> </FONT></td></tr>
+    </table>
+    >]
+
+    /* Relationships */
+    student->grading[label="Retrieve\n questions from\nSend\nresponses to\n[https/]"]
+    student_out->grading
+    teacher->grading[label="Logs into \nGrades answers"]
+    /* Ranks */
+}
