@@ -14,7 +14,7 @@ digraph forderly_context {
         kiosk [label=<
         <table border="0" cellspacing="0" cellborder="0"  width="250" height="130" fixedsize="true">
           <tr><td width="200" height="30" fixedsize="true" cellpadding="0" align="text"><FONT POINT-SIZE="20">Self-serve Kiosk</FONT></td >
-          <td rowspan="2" width="50" height="60" fixedsize="true" cellpadding="0"><img scale="true" src="./images/kiosk.png"/></td></tr>
+          <td rowspan="2" width="50" height="60" fixedsize="true" cellpadding="0"><img scale="true" src="../images/kiosk.png"/></td></tr>
           <tr><td width="200" height="30" cellpadding="0" align="text"><FONT POINT-SIZE="10">[SELinux/SPA]</FONT></td></tr>
           <tr><td colspan="2" width="250" height="70" fixedsize="true" cellpadding="0" align="text" balign="left"><FONT POINT-SIZE="14">Allows customer to browse menu, order,<br/>  and pay<br/>Phones home for fetching updates and<br/>  config updates</FONT></td></tr>
         </table>
@@ -23,7 +23,7 @@ digraph forderly_context {
         admin [label=<
         <table border="0" cellspacing="0" cellborder="0"  width="250" height="150" fixedsize="true">
           <tr><td width="200" height="30" fixedsize="true" cellpadding="0" align="text"><FONT POINT-SIZE="20">Administrator</FONT></td >
-          <td rowspan="2" width="50" height="60" fixedsize="true" cellpadding="0"><img scale="true" src="./images/person.png"/></td></tr>
+          <td rowspan="2" width="50" height="60" fixedsize="true" cellpadding="0"><img scale="true" src="../images/person.png"/></td></tr>
           <tr><td width="200" height="30" cellpadding="0" align="text"><FONT POINT-SIZE="10">[Customer Employee]</FONT></td></tr>
           <tr><td colspan="2" width="250" height="90" fixedsize="true" cellpadding="0" align="text" balign="left"><FONT POINT-SIZE="14">Accesses Admin Webportal to:<br/>  * Provision/Deprovision Kiosks<br/>  * Configure Kiosks<br/>  * Provision/Deporvision account users<br/>  * Configure menu items</FONT></td></tr>
         </table>
@@ -32,7 +32,7 @@ digraph forderly_context {
         printer [label=<
         <table border="0" cellspacing="0" cellborder="0"  width="250" height="100" fixedsize="true">
           <tr><td width="200" height="30" fixedsize="true" cellpadding="0" align="text"><FONT POINT-SIZE="20">Printer</FONT></td >
-          <td rowspan="2" width="50" height="60" fixedsize="true" cellpadding="0"><img scale="true" src="./images/mini-printer.png"/></td></tr>
+          <td rowspan="2" width="50" height="60" fixedsize="true" cellpadding="0"><img scale="true" src="../images/mini-printer.png"/></td></tr>
           <tr><td width="200" height="30" cellpadding="0" align="text"><FONT POINT-SIZE="10">[Mini Printer]</FONT></td></tr>
           <tr><td colspan="2" width="250" height="40" fixedsize="true" cellpadding="0" align="text" balign="left"><FONT POINT-SIZE="14">Prints carbon-copy receipts to<br/>  kitchen-staff</FONT></td></tr>
         </table>
@@ -45,7 +45,7 @@ digraph forderly_context {
         forderly [label=<
         <table border="0" cellspacing="0" cellborder="0"  width="250" height="100" fixedsize="true">
           <tr><td width="200" height="30" fixedsize="true" cellpadding="0" align="text"><FONT POINT-SIZE="20">Forderly SaaS</FONT></td >
-          <td rowspan="2" width="50" height="60" fixedsize="true" cellpadding="0"><img scale="true" src="./images/server.png"/></td></tr>
+          <td rowspan="2" width="50" height="60" fixedsize="true" cellpadding="0"><img scale="true" src="../images/server.png"/></td></tr>
           <tr><td width="200" height="30" cellpadding="0" align="text"><FONT POINT-SIZE="10">[SaaS Solution]</FONT></td></tr>
           <tr><td colspan="2" width="250" height="40" fixedsize="true" cellpadding="0" align="text" balign="left"><FONT POINT-SIZE="14">Serve SMB with a ready-to-use platform<br/>  for ordering and delivering food</FONT></td></tr>
         </table>
@@ -55,7 +55,7 @@ digraph forderly_context {
     payment [color="#6b6b6b", fillcolor="#BFBFBF", fontcolor="#ffffff"label=<
     <table border="0" cellspacing="0" cellborder="0"  width="250" height="100" fixedsize="true">
       <tr><td width="200" height="30" fixedsize="true" cellpadding="0" align="text"><FONT POINT-SIZE="20">Payment Provider</FONT></td >
-      <td rowspan="2" width="50" height="60" fixedsize="true" cellpadding="0"><img scale="true" src="./images/server.png"/></td></tr>
+      <td rowspan="2" width="50" height="60" fixedsize="true" cellpadding="0"><img scale="true" src="../images/server.png"/></td></tr>
       <tr><td width="200" height="30" cellpadding="0" align="text"><FONT POINT-SIZE="10">[SaaS Provider]</FONT></td></tr>
       <tr><td colspan="2" width="250" height="40" fixedsize="true" cellpadding="0" align="text" balign="left"><FONT POINT-SIZE="14">Processes payment details<br/>PCI-certified vendor</FONT></td></tr>
     </table>
@@ -64,7 +64,7 @@ digraph forderly_context {
     support [label=<
     <table border="0" cellspacing="0" cellborder="0"  width="250" height="100" fixedsize="true">
       <tr><td width="200" height="30" fixedsize="true" cellpadding="0" align="text"><FONT POINT-SIZE="20">Support /Ops Emp.</FONT></td >
-      <td rowspan="2" width="50" height="60" fixedsize="true" cellpadding="0"><img scale="true" src="./images/person.png"/></td></tr>
+      <td rowspan="2" width="50" height="60" fixedsize="true" cellpadding="0"><img scale="true" src="../images/person.png"/></td></tr>
       <tr><td width="200" height="30" cellpadding="0" align="text"><FONT POINT-SIZE="10">[internal]</FONT></td></tr>
       <tr><td colspan="2" width="250" height="40" fixedsize="true" cellpadding="0" align="text" balign="left"><FONT POINT-SIZE="14">Manages the infrastructure</FONT></td></tr>
     </table>
