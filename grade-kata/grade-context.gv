@@ -45,6 +45,14 @@ digraph grade_context    {
           <tr><td colspan="2" width="250" height="40" fixedsize="true" cellpadding="0" align="text" balign="left"><FONT POINT-SIZE="12">Student sitting to take an exam</FONT></td></tr>
         </table>
         >]
+        badSt [label=<
+        <table border="0" cellspacing="0" cellborder="0"  width="250" height="100" fixedsize="true">
+          <tr><td width="200" height="30" fixedsize="true" cellpadding="0" align="text"><FONT POINT-SIZE="20">Bad Student</FONT></td >
+          <td rowspan="2" width="50" height="60" fixedsize="true" cellpadding="0"><img scale="true" src="../images/hacker-transparent.png"/></td></tr>
+          <tr><td width="200" height="30" cellpadding="0" align="text"><FONT POINT-SIZE="10">[Someone pretending to be a student]</FONT></td></tr>
+          <tr><td colspan="2" width="250" height="40" fixedsize="true" cellpadding="0" align="text" balign="left"><FONT POINT-SIZE="12">Cheater paid for the student to pass the exam<br/>on their behalf</FONT></td></tr>
+        </table>
+        >]
     }
     
     teacher [label=<
@@ -66,8 +74,6 @@ digraph grade_context    {
     >]
 
     /* Relationships */
-    student->grading[label="Retrieve\n questions from\nSend\nresponses to\n[https/]"]
-    student_out->grading
-    teacher->grading[label="Logs into \nGrades answers"]
+    badSt       ->  grading[label="Answer exam"]
     /* Ranks */
 }
