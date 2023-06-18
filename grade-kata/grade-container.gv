@@ -1,0 +1,119 @@
+digraph grade_container    {
+    label=<<br /><font point-size="34">Grading System Container Diagram</font>>
+    labelloc=tc
+    graph [fontname="Arial", rankdir=TB, ranksep=1.0, nodesep=1.0]
+    node[fontname="Arial", shape="plaintext", style=filled, fontcolor="#ffffff",  fillcolor="#1274D6"]
+    edge [fontname="Arial", fontsize=11]
+
+    /* Entities */
+    subgraph cluster_AWS {
+        style=dashed
+        label=<<font point-size="16"><br />AWS</font><br /><font point-size="12">[CSP]</font>>
+        labelloc=bc
+        subgraph cluster_external {
+          style=dashed
+          label=<<font point-size="16"><br />DMZ</font><br /><font point-size="12">[exposed interfaces to the internet]</font>>
+          labelloc=bc
+
+          testAPI [label=<
+          <table border="0" cellspacing="0" cellborder="0" width="200" height="160" fixedsize="true">
+            <tr><td width="200" height="30" fixedsize="true" cellpadding="0" align="text"><FONT POINT-SIZE="20">test API</FONT></td></tr>
+            <tr><td width="200" height="30" cellpadding="0" align="text"><FONT POINT-SIZE="10">[python/fastAPI]</FONT></td></tr>
+            <tr><td width="200" height="40" fixedsize="true" cellpadding="0" align="text" balign="left"><FONT POINT-SIZE="12">Receives answers from authenticated users</FONT></td></tr>
+          </table>
+          >]
+          testUI [label=<
+          <table border="0" cellspacing="0" cellborder="0" width="200" height="160" fixedsize="true">
+            <tr><td width="200" height="30" fixedsize="true" cellpadding="0" align="text"><FONT POINT-SIZE="20">Test UI</FONT></td></tr>
+            <tr><td width="200" height="30" cellpadding="0" align="text"><FONT POINT-SIZE="10">[nodeJS]</FONT></td></tr>
+            <tr><td width="200" height="40" fixedsize="true" cellpadding="0" align="text" balign="left"><FONT POINT-SIZE="12">Shows the questinos to the students</FONT></td></tr>
+          </table>
+          >]
+          teacherUI [label=<
+          <table border="0" cellspacing="0" cellborder="0" width="200" height="160" fixedsize="true">
+            <tr><td width="200" height="30" fixedsize="true" cellpadding="0" align="text"><FONT POINT-SIZE="20">Teacher UI</FONT></td></tr>
+            <tr><td width="200" height="30" cellpadding="0" align="text"><FONT POINT-SIZE="10">[python/nodeJS]</FONT></td></tr>
+            <tr><td width="200" height="40" fixedsize="true" cellpadding="0" align="text" balign="left"><FONT POINT-SIZE="12">allows teachers to<br/>    submit questions<br/>    grade answers</FONT></td></tr>
+          </table>
+          >]
+          teacherAPI [label=<
+          <table border="0" cellspacing="0" cellborder="0" width="200" height="160" fixedsize="true">
+            <tr><td width="200" height="30" fixedsize="true" cellpadding="0" align="text"><FONT POINT-SIZE="20">Teacher API</FONT></td></tr>
+            <tr><td width="200" height="30" cellpadding="0" align="text"><FONT POINT-SIZE="10">[python/fastAPI]</FONT></td></tr>
+            <tr><td width="200" height="40" fixedsize="true" cellpadding="0" align="text" balign="left"><FONT POINT-SIZE="12">processes input from teachers</FONT></td></tr>
+          </table>
+          >]
+          adminUI [label=<
+          <table border="0" cellspacing="0" cellborder="0" width="200" height="160" fixedsize="true">
+            <tr><td width="200" height="30" fixedsize="true" cellpadding="0" align="text"><FONT POINT-SIZE="20">Admin UI</FONT></td></tr>
+            <tr><td width="200" height="30" cellpadding="0" align="text"><FONT POINT-SIZE="10">[nodeJS]</FONT></td></tr>
+            <tr><td width="200" height="40" fixedsize="true" cellpadding="0" align="text" balign="left"><FONT POINT-SIZE="12">description of purpose</FONT></td></tr>
+          </table>
+          >]
+          adminAPI [label=<
+          <table border="0" cellspacing="0" cellborder="0" width="200" height="160" fixedsize="true">
+            <tr><td width="200" height="30" fixedsize="true" cellpadding="0" align="text"><FONT POINT-SIZE="20">Admin API</FONT></td></tr>
+            <tr><td width="200" height="30" cellpadding="0" align="text"><FONT POINT-SIZE="10">[python/fastAPI]</FONT></td></tr>
+            <tr><td width="200" height="40" fixedsize="true" cellpadding="0" align="text" balign="left"><FONT POINT-SIZE="12">description of purpose</FONT></td></tr>
+          </table>
+          >]
+        }
+        subgraph cluster_db {
+          style=dashed
+          label=<<font point-size="16"><br />DB Zone</font><br /><font point-size="12">[VPC DB]</font>>
+          labelloc=bc
+          DB [label=<
+    <table border="0" cellspacing="0" cellborder="0" width="200" height="160" fixedsize="true">
+            <tr><td width="200" height="30" fixedsize="true" cellpadding="0" align="text"><FONT POINT-SIZE="20">Aurora SQL DB</FONT></td></tr>
+            <tr><td width="200" height="30" cellpadding="0" align="text"><FONT POINT-SIZE="10">[type]</FONT></td></tr>
+            <tr><td width="200" height="40" fixedsize="true" cellpadding="0" align="text" balign="left"><FONT POINT-SIZE="12">Stores questions, answers, grades,<br/>student data, school districts, schools,<br/>statistics </FONT></td></tr>
+    </table>
+    >]
+    }
+    }
+
+    subgraph cluster_school {
+        style=dashed
+        label=<<font point-size="16"><br />Testing Center</font><br /><font point-size="12">[School]</font>>
+        labelloc=bc
+        student [label=<
+        <table border="0" cellspacing="0" cellborder="0"  width="250" height="100" fixedsize="true">
+          <tr><td width="200" height="30" fixedsize="true" cellpadding="0" align="text"><FONT POINT-SIZE="20">Student</FONT></td >
+          <td rowspan="2" width="50" height="60" fixedsize="true" cellpadding="0"><img scale="true" src="../images/person.png"/></td></tr>
+          <tr><td width="200" height="30" cellpadding="0" align="text"><FONT POINT-SIZE="10">[PC in computer lab]</FONT></td></tr>
+          <tr><td colspan="2" width="250" height="40" fixedsize="true" cellpadding="0" align="text" balign="left"><FONT POINT-SIZE="12">Browser running the test UI</FONT></td></tr>
+        </table>
+        >]
+        
+    }
+
+    
+    teacher [label=<
+    <table border="0" cellspacing="0" cellborder="0"  width="250" height="100" fixedsize="true">
+      <tr><td width="200" height="30" fixedsize="true" cellpadding="0" align="text"><FONT POINT-SIZE="20">Teacher</FONT></td >
+      <td rowspan="2" width="50" height="60" fixedsize="true" cellpadding="0"><img scale="true" src="../images/person.png"/></td></tr>
+      <tr><td width="200" height="30" cellpadding="0" align="text"><FONT POINT-SIZE="10">[Teacher/Grader]</FONT></td></tr>
+      <tr><td colspan="2" width="250" height="40" fixedsize="true" cellpadding="0" align="text" balign="left"><FONT POINT-SIZE="12">Grades long-form answers in the browser</FONT></td></tr>
+    </table>
+    >]
+
+    admin [label=<
+    <table border="0" cellspacing="0" cellborder="0"  width="250" height="100" fixedsize="true">
+      <tr><td width="200" height="30" fixedsize="true" cellpadding="0" align="text"><FONT POINT-SIZE="20">Admin</FONT></td >
+      <td rowspan="2" width="50" height="60" fixedsize="true" cellpadding="0"><img scale="true" src="../images/person.png"/></td></tr>
+      <tr><td width="200" height="30" cellpadding="0" align="text"><FONT POINT-SIZE="10">[school director]</FONT></td></tr>
+      <tr><td colspan="2" width="250" height="40" fixedsize="true" cellpadding="0" align="text" balign="left"><FONT POINT-SIZE="12">Admin the grading system for their school:<br/>Add teachers, students<br/>Get reports per class, school<br/> </FONT></td></tr>
+    </table>
+    >]
+
+    /* Relationships */
+    student     ->  testUI [label="Retrieve\n static content from\n[https/uuid for authN]"]
+    student     ->  testAPI [label="Send answers"]
+    teacher     ->  teacherUI [label="Logs into \nRetrieves static content[https/\nSSO]"]
+    teacher     ->  teacherAPI[label="queries quesions from\nsends grades to "]
+    admin       ->  adminUI[label="Logs in\nDoes administrative functions"]
+    admin       ->  adminAPI[label="Send administrative actions"]
+    testAPI     ->  DB[label="Read/Write Data to\n[encrpyted/admin user]"]
+    teacherAPI  ->  DB[label="Read/Write Data to\n[encrpyted/admin user]"]
+    /* Ranks */
+}
