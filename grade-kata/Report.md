@@ -1,6 +1,6 @@
 # Target of Evaluation
 
-Grading System Saas is a solution to support standardized testing across all public school systems grades 3-12. It serves over 40,000+ students, 2000 graders, and 50 administrators.
+Grading System SaaS is a solution to support standardized testing across all public school systems grades 3-12. It serves over 40,000+ students, 2000 graders, and 50 administrators.
 
 It is hosted in AWS.
 
