@@ -15,6 +15,9 @@
 * DoS
   * network level at school
   * app level for the grading system
+* Cheating
+  * use chatGPT to answer the questions
+
 
 ## Teachers
 
