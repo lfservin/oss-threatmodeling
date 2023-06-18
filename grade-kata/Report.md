@@ -31,6 +31,8 @@ This is the grading system in its context of use, with its different stakeholder
 ![Grading system container diagram](./images/grade-container.png)
 
 
+### Threats
+
 |Id| Title| Vulnerability | Attack scenario | Outcome|Severity|
 |--|--|--|--|--|--|
 
