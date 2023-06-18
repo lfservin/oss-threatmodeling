@@ -1,5 +1,5 @@
 digraph grade_context    {
-    label=<<br /><font point-size="34">Grading system context Diagram</font>>
+    label=<<br /><font point-size="34">Grading System Context Diagram</font>>
     labelloc=tc
     graph [fontname="Arial", rankdir=TB, ranksep=1.0, nodesep=1.0]
     node[fontname="Arial", shape="plaintext", style=filled, fontcolor="#ffffff",  fillcolor="#1274D6"]
