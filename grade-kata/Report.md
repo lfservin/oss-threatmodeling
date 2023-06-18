@@ -26,6 +26,10 @@ This is the grading system in its context of use, with its different stakeholder
 
 ![Grading system context diagram](./images/grade-context.png)
 
+### Container Diagram
+![Grading system container diagram](./images/grade-container.png)
+
+
 |Id| Title| Vulnerability | Attack scenario | Outcome|Severity|
 |--|--|--|--|--|--|
 
