@@ -74,6 +74,10 @@ digraph grade_context    {
     >]
 
     /* Relationships */
+    student     ->  grading[label="Retrieve\n questions from\nSend\nresponses to\n[https/]"]
+    student_out ->  grading[label="Answer exam"]
     badSt       ->  grading[label="Answer exam"]
+    teacher     ->  grading[label="Logs into \nGrades answers"]
+    admin       ->  grading[label="Logs in\nDoes administrative functions"]
     /* Ranks */
 }
