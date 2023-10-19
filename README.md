@@ -14,9 +14,10 @@ To create [C4model](https://c4model.com) diagrams using graphviz, you need to in
 
 Now that you're setup, here you can find the artifacts needed for the workshop:
 
-* 
 * [forderly_context.gv](./forderly_context.gv) is the source code for the context (high-level) diagram
 * [forderly_container.gv](./forderly_container.gv) is the source code for the container diagram
 * All icons used for the diagram are located in [images](./images/)
 * [Report.md](Report.md) contains an exemplary report upon which we'll work during the workshop
 * The folder [msmtm](./mstmt/) contains files created using [Microsoft's Threat Modeling Tool](https://www.microsoft.com/en-us/securityengineering/sdl/threatmodeling)
+* [grade-context.gv](./grade-kata/grade-context.gv) is the source code for the context diagram of the grading system kata
+* [grade-container.gv](./grade-kata/grade-container.gv) is the source code for the container diagram created for the grading system kata

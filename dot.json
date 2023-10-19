@@ -60,7 +60,7 @@
 	"htmlNode_img_out":{
         "prefix": ["html"],
         "body": [
-            "${1:name} [color=\"#6b6b6b\", fillcolor=\"#BFBFBF\", fontcolor=\"#ffffff\"label=<",
+            "${1:name} [color=\"#6b6b6b\", fillcolor=\"#BFBFBF\", fontcolor=\"#ffffff\" label=<",
             "<table border=\"0\" cellspacing=\"0\" cellborder=\"0\"  width=\"250\" height=\"100\" fixedsize=\"true\">",
             "  <tr><td width=\"200\" height=\"30\" fixedsize=\"true\" cellpadding=\"0\" align=\"text\"><FONT POINT-SIZE=\"20\">${2:Label}</FONT></td >",
             "  <td rowspan=\"2\" width=\"50\" height=\"60\" fixedsize=\"true\" cellpadding=\"0\"><img scale=\"true\" src=\"${3:path/to/file.png}\"/></td></tr>",
@@ -75,6 +75,19 @@
         "prefix": ["html"],
         "body": [
             "${1:name} [label=<",
+            "<table border=\"0\" cellspacing=\"0\" cellborder=\"0\" width=\"200\" height=\"160\" fixedsize=\"true\">",
+            "  <tr><td width=\"200\" height=\"30\" fixedsize=\"true\" cellpadding=\"0\" align=\"text\"><FONT POINT-SIZE=\"20\">${2:Label}</FONT></td></tr>",
+            "  <tr><td width=\"200\" height=\"30\" cellpadding=\"0\" align=\"text\"><FONT POINT-SIZE=\"10\">[${3:type}]</FONT></td></tr>",
+            "  <tr><td width=\"200\" height=\"40\" fixedsize=\"true\" cellpadding=\"0\" align=\"text\" balign=\"left\"><FONT POINT-SIZE=\"14\">${4:description of purpose}</FONT></td></tr>",
+            "</table>",
+            ">]"],
+        "description": "[Create html node]\nHelps to get nice Diagrams\n\n"
+    }
+
+    "htmlNode_out":{
+        "prefix": ["html"],
+        "body": [
+            "${1:name} [color=\"#6b6b6b\", fillcolor=\"#BFBFBF\", fontcolor=\"#ffffff\" label=<",
             "<table border=\"0\" cellspacing=\"0\" cellborder=\"0\" width=\"200\" height=\"160\" fixedsize=\"true\">",
             "  <tr><td width=\"200\" height=\"30\" fixedsize=\"true\" cellpadding=\"0\" align=\"text\"><FONT POINT-SIZE=\"20\">${2:Label}</FONT></td></tr>",
             "  <tr><td width=\"200\" height=\"30\" cellpadding=\"0\" align=\"text\"><FONT POINT-SIZE=\"10\">[${3:type}]</FONT></td></tr>",
