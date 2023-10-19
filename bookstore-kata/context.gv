@@ -1,0 +1,84 @@
+digraph bookstore_context {
+    label=<<br /><font point-size="34">Bookstore Context Diagram</font><br/><font> 19.10.2023</font>>
+    labelloc=tc
+    graph [fontname="Arial", rankdir=TB, ranksep=1.0, nodesep=1.0]
+    node[fontname="Arial", shape="plaintext", style=filled, fontcolor="#ffffff",  fillcolor="#1274D6"]
+    edge [fontname="Arial", fontsize=11]
+
+    /* Entities */
+    customer [label=<
+    <table border="0" cellspacing="0" cellborder="0"  width="250" height="120" fixedsize="true">
+      <tr><td width="200" height="30" fixedsize="true" cellpadding="0" align="text"><FONT POINT-SIZE="20">Customer</FONT></td >
+      <td rowspan="2" width="50" height="60" fixedsize="true" cellpadding="0"><img scale="true" src="../images/person.png"/></td></tr>
+      <tr><td width="200" height="30" cellpadding="0" align="text"><FONT POINT-SIZE="10">[External]</FONT></td></tr>
+      <tr><td colspan="2" width="250" height="60" fixedsize="true" cellpadding="0" align="text" balign="left"><FONT POINT-SIZE="11">Bookstore customer<br/>Register <br/>Sign In<br/>Check / Create Order <br/>Pay</FONT></td></tr>
+    </table>
+    >]
+
+    admin [label=<
+    <table border="0" cellspacing="0" cellborder="0"  width="250" height="120" fixedsize="true">
+      <tr><td width="200" height="30" fixedsize="true" cellpadding="0" align="text"><FONT POINT-SIZE="20">Admin</FONT></td >
+      <td rowspan="2" width="50" height="60" fixedsize="true" cellpadding="0"><img scale="true" src="../images/person.png"/></td></tr>
+      <tr><td width="200" height="30" cellpadding="0" align="text"><FONT POINT-SIZE="10">[Internal]</FONT></td></tr>
+      <tr><td colspan="2" width="250" height="60" fixedsize="true" cellpadding="0" align="text" balign="left"><FONT POINT-SIZE="11">Bookstore admin <br/>Updates book catalog (add/delete book) <br/>Checks customer orders</FONT></td></tr>
+    </table>
+    >]
+
+    subgraph cluster_aws {
+        style=dashed
+        label=<<font point-size="16"><br />AWS</font><br /><font point-size="12">[CSP]</font>>
+        labelloc=bc
+
+        api [label=<
+        <table border="0" cellspacing="0" cellborder="0"  width="250" height="100" fixedsize="true">
+          <tr><td width="200" height="30" fixedsize="true" cellpadding="0" align="text"><FONT POINT-SIZE="20">API</FONT></td >
+          <td rowspan="2" width="50" height="60" fixedsize="true" cellpadding="0"><img scale="true" src="../images/api.png"/></td></tr>
+          <tr><td width="200" height="30" cellpadding="0" align="text"><FONT POINT-SIZE="10">[Backend]</FONT></td></tr>
+          <tr><td colspan="2" width="250" height="40" fixedsize="true" cellpadding="0" align="text" balign="left"><FONT POINT-SIZE="12">Process requests to operate on the books</FONT></td></tr>
+        </table>
+        >]
+
+        db [label=<
+        <table border="0" cellspacing="0" cellborder="0" width="200" height="160" fixedsize="true">
+          <tr><td width="200" height="30" fixedsize="true" cellpadding="0" align="text"><FONT POINT-SIZE="20">Database</FONT></td></tr>
+          <tr><td width="200" height="30" cellpadding="0" align="text"><FONT POINT-SIZE="10">[RDS Postgresql]</FONT></td></tr>
+          <tr><td width="200" height="40" fixedsize="true" cellpadding="0" align="text" balign="left"><FONT POINT-SIZE="12">Store and serve book and customer <br/>data</FONT></td></tr>
+        </table>
+        >]
+
+        cognito [label=<
+        <table border="0" cellspacing="0" cellborder="0" width="200" height="160" fixedsize="true">
+          <tr><td width="200" height="30" fixedsize="true" cellpadding="0" align="text"><FONT POINT-SIZE="20">cognito</FONT></td></tr>
+          <tr><td width="200" height="30" cellpadding="0" align="text"><FONT POINT-SIZE="10">[Identity Provider]</FONT></td></tr>
+          <tr><td width="200" height="40" fixedsize="true" cellpadding="0" align="text" balign="left"><FONT POINT-SIZE="12">Provides the identity of the user</FONT></td></tr>
+        </table>
+        >]
+
+        spa [label=<
+        <table border="0" cellspacing="0" cellborder="0" width="200" height="160" fixedsize="true">
+          <tr><td width="200" height="30" fixedsize="true" cellpadding="0" align="text"><FONT POINT-SIZE="20">Single Page Application</FONT></td></tr>
+          <tr><td width="200" height="30" cellpadding="0" align="text"><FONT POINT-SIZE="10">[React JS]</FONT></td></tr>
+          <tr><td width="200" height="40" fixedsize="true" cellpadding="0" align="text" balign="left"><FONT POINT-SIZE="12">Provides the UI for the user</FONT></td></tr>
+        </table>
+        >]
+
+
+    }
+
+    stripe [color="#6b6b6b", fillcolor="#BFBFBF", fontcolor="#ffffff", label=<
+    <table border="0" cellspacing="0" cellborder="0" width="200" height="160" fixedsize="true">
+      <tr><td width="200" height="30" fixedsize="true" cellpadding="0" align="text"><FONT POINT-SIZE="20">Stripe</FONT></td></tr>
+      <tr><td width="200" height="30" cellpadding="0" align="text"><FONT POINT-SIZE="10">[payment provider SaaS]</FONT></td></tr>
+      <tr><td width="200" height="40" fixedsize="true" cellpadding="0" align="text" balign="left"><FONT POINT-SIZE="12">Manages payments with credit card <br/>Returns a transaction id</FONT></td></tr>
+    </table>
+    >]
+    /* Relationships */
+    customer    -> cognito[label="Provide username/pwd\n[https]"]
+    customer    -> spa [label="Get the UI\n[https]"]
+    customer    -> api[label="Make requests\n[https\njwt]"]
+    api         -> db[label="get/write data\nunencrypted\nadmin user/pwd"]
+    api         -> stripe[label="Sends vendorID\nand amount\n[https/api key]"]
+    admin       -> api[label="Updates book catalog\nchecks orders\n[https\njwt]"]
+
+    /* Ranks */
+}
