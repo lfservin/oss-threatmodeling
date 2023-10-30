@@ -82,7 +82,7 @@
             "</table>",
             ">]"],
         "description": "[Create html node]\nHelps to get nice Diagrams\n\n"
-    }
+    },
 
     "htmlNode_out":{
         "prefix": ["html"],
