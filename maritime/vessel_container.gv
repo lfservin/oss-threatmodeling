@@ -1,0 +1,89 @@
+digraph ModernVessel {
+    node [shape=box];
+
+    subgraph cluster_ship {
+        style=dashed
+        label=<<font point-size="16"><br />Ship</font><br /><font point-size="12">[onboard data center]</font>>
+        labelloc=bc
+        
+        subgraph cluster_IT {
+        label="IT Systems";
+        style=filled;
+        color=lightgrey;
+        
+        Admin_Network [label="Admin Network\nFacilitates administrative tasks and sensitive data access"];
+        User_Network [label="User Network\nAllows employees to use business applications"];
+        Guest_Network [label="Guest Network\nProvides internet access for guests"];
+        DMZ [label="DMZ\nHosts external-facing services"];
+        Backup_Network [label="Backup Network\nHandles backup operations and data storage"];
+        Management_Network [label="Management Network\nManages network infrastructure"];
+        
+        VSAT [label="VSAT\nEnables satellite communication"];
+        IT_Network_Systems [label="IT Network Systems\nFacilitates data processes and connectivity"];
+        Passenger_Servicing [label="Passenger Servicing and Management Systems\nManages passenger-related data and services"];
+        Crew_Welfare [label="Crew Welfare Systems\nProvides internet and email access for crew"];
+        Communication_Systems [label="Communication Systems\nEnsures ship connectivity"];
+        Administrative_System [label="Administrative System\nHandles administrative tasks and data management"];
+    }
+
+    subgraph cluster_OT {
+        label="OT Systems";
+        style=filled;
+        color=lightblue;
+
+        Production_OT [label="Production OT\nCritical network for operational technology systems"];
+        Development_OT [label="Development OT\nFor development and testing of OT systems"];
+        IoT_Network [label="IoT Network\nFor Internet of Things devices"];
+        
+        AIS [label="AIS\nMonitors vessel traffic and location"];
+        ECDIS [label="ECDIS\nDisplays navigation data"];
+        GPS [label="GPS/GNSS\nProvides ship positioning and route information"];
+        Radar [label="Radar\nDetects objects around the ship"];
+        GMDSS [label="GMDSS\nBroadcasts distress messages and safety alerts"];
+        ICS [label="ICS\nControls and monitors shipboard equipment"];
+        Propulsion_Management [label="Propulsion and Machinery Management Systems\nMonitors and controls propulsion and machinery"];
+        VSS [label="Video Surveillance Systems\nMonitors ship operations and security"];
+        IBS [label="IBS\nCentralizes navigation and control systems"];
+        DPS [label="DPS\nMaintains vessel position"];
+        Engine_Monitoring [label="Engine Monitoring and Control Systems\nMonitors and controls engine performance"];
+        Safety_Security_Networks [label="Safety and Security Networks\nMonitors safety and security"];
+    }
+
+    subgraph cluster_Management {
+        label="Management Systems";
+        style=filled;
+        color=lightgreen;
+
+        Access_Control [label="Access Control Systems\nManages physical security and safety"];
+        Safety_Security [label="Safety and Security Networks\nMonitors safety and security"];
+    }
+    }
+    subgraph cluster_Port {
+        label="Port Systems";
+        style=filled;
+        color=lightcoral;
+
+        Port_Authority [label="Port Authority\nMonitors and manages port operations"];
+        Customs [label="Customs\nHandles customs and border protection"];
+    }
+
+    // Connections
+    VSAT -> Port_Authority [label="Communicates"];
+    Communication_Systems -> Port_Authority [label="Communicates"];
+    AIS -> Port_Authority [label="Notifies location"];
+    ECDIS -> GPS [label="Uses data from"];
+    GPS -> Port_Authority [label="Provides position info"];
+    Radar -> Port_Authority [label="Provides surrounding info"];
+    GMDSS -> Port_Authority [label="Sends distress alerts"];
+    ICS -> Port_Authority [label="Reports parameters"];
+    Propulsion_Management -> Port_Authority [label="Reports status"];
+    VSS -> Port_Authority [label="Monitors security"];
+    IBS -> Port_Authority [label="Centralizes control"];
+    DPS -> Port_Authority [label="Maintains position"];
+    Engine_Monitoring -> Port_Authority [label="Reports engine status"];
+    Safety_Security_Networks -> Port_Authority [label="Monitors safety"];
+    Administrative_System -> Customs [label="Handles data"];
+    Access_Control -> Customs [label="Manages security"];
+    Passenger_Servicing -> Port_Authority [label="Provides data"];
+    Crew_Welfare -> Port_Authority [label="Provides internet"];
+}

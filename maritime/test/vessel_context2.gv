@@ -1,0 +1,60 @@
+digraph G {
+  rankdir=LR;
+  node [shape=box, style=filled, color=lightblue];
+
+  // Ship cluster
+  subgraph cluster_ship {
+    label="Ship Systems";
+    style=dashed;
+    color=gray;
+
+    Bridge_Systems [label="Bridge Systems\nNavigation and control systems."];
+    Cargo_Management [label="Cargo Management\nSystem for handling and tracking cargo."];
+    Propulsion_Machinery [label="Propulsion & Machinery\nEngines and power control systems."];
+    Access_Control [label="Access Control\nManages access to different ship areas."];
+    Crew_Welfare [label="Crew Welfare\nFacilities and systems for crew well-being."];
+    Communication_Systems [label="Communication Systems\nExternal and internal communication."];
+    Passenger_Services [label="Passenger Services\nSystems for passenger management."];
+    Public_Networks [label="Public Networks\nInternet and other public networks on board."];
+
+    Ship -> Bridge_Systems [label="navigation and control"];
+    Ship -> Cargo_Management [label="cargo tracking"];
+    Ship -> Propulsion_Machinery [label="engine control"];
+    Ship -> Access_Control [label="access management"];
+    Ship -> Crew_Welfare [label="crew services"];
+    Ship -> Communication_Systems [label="communication"];
+    Ship -> Passenger_Services [label="passenger management"];
+    Ship -> Public_Networks [label="public internet"];
+  }
+
+  // External actors
+  Port_Authorities [label="Port Authorities\nManage port operations and security."];
+  Shipping_Company [label="Shipping Company\nOwner/operator of the ship."];
+  Equipment_Manufacturers [label="Equipment Manufacturers\nProviders of ship equipment."];
+  Service_Providers [label="Service Providers\nExternal services for ship operations."];
+  Classification_Societies [label="Classification Societies\nCertify ship's compliance with standards."];
+  Maritime_Agencies [label="Maritime Agencies\nRegulatory and safety agencies."];
+  Communication_Satellite [label="Communication Satellite\nSatellite for communication."];
+  GPS_Satellite [label="GPS Satellite\nSatellite for navigation."];
+  CyberSecurity_Firms [label="Cybersecurity Firms\nProvide cybersecurity services."];
+  Cargo_Handling_Facilities [label="Cargo Handling Facilities\nFacilities at ports for cargo handling."];
+
+  // External connections
+  Ship -> Port_Authorities [label="port operations"];
+  Ship -> Shipping_Company [label="operational management"];
+  Ship -> Equipment_Manufacturers [label="equipment maintenance"];
+  Ship -> Service_Providers [label="external services"];
+  Ship -> Classification_Societies [label="compliance checks"];
+  Ship -> Maritime_Agencies [label="regulatory reporting"];
+  Ship -> Communication_Satellite [label="communication"];
+  Ship -> GPS_Satellite [label="navigation"];
+  Ship -> CyberSecurity_Firms [label="cybersecurity"];
+  Ship -> Cargo_Handling_Facilities [label="cargo operations"];
+
+  // Ports and handling
+  Port_Authorities -> Cargo_Handling_Facilities [label="coordinate operations"];
+  Port_Authorities -> Shipping_Company [label="regulations and compliance"];
+  Shipping_Company -> CyberSecurity_Firms [label="security services"];
+  Shipping_Company -> Equipment_Manufacturers [label="maintenance contracts"];
+}
+
