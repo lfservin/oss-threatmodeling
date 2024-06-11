@@ -4,10 +4,9 @@
 
 1. Customer swipes the card and the kiosk sends the information via the REST api to the admin service which calls the payment service ( See D1 for details )
 
-The detail image has no such flow, but on to the order service flow (number 6) it states:
+    The detail image has no such flow, but on to the order service flow (number 6) it states:
 
-The Kiosk communicates order and payment information to the order services to
-process the order.
+    The Kiosk communicates order and payment information to the order services to process the order.
 
 2. Unencrypted comm to the order service from the printers, but port 80 is not open on the firewall. So, no printing?
 
@@ -15,9 +14,10 @@ process the order.
 There is no such dataflow in the detailed description. So that must be taken care of by the order service as well.
 
 ## Findings
+
 Some of the findings are pretty obvious, some not so much. Here is a list of vulnerabilities on a quick pass. The idea of the workshop is to come up with as many as possible together with the audience, so I'm more concentrated on the modeling side for the preparation.
 
-* unencrypted comms: printer to order service, payment and order services
+* unencrypted communications: printer to order service, payment and order services
 * insufficient authentication: Printer uses GUIDs as authentication method, admin portal only uses username/pwd (no info on whether there are any checks on attempts per ip, blocking of account for failed attempts, etc)
 * Insufficient privilege (authorization) checks: printer to order service; kiosk to admin service (how is the certificate identity (layer4) translated into access to admin portal (layer 7)?); order to payment service (unauthenticated)
 * Shared credentials for infrastructure access
