@@ -1,0 +1,81 @@
+digraph {
+    // Set global node attributes for C4 model
+    node [fontname="Arial", shape="plaintext", style=filled, fontcolor="#ffffff", color="#0b4884", fillcolor="#1168bd"]
+
+    // Define User node
+    User [label=<
+    <table border="0" cellspacing="0" cellborder="0" width="250" height="100">
+      <tr><td width="250" height="30" align="center"><FONT POINT-SIZE="20">User (Customer)</FONT></td></tr>
+      <tr><td width="250" height="30" align="center"><FONT POINT-SIZE="10">[External Actor]</FONT></td></tr>
+      <tr><td width="250" height="40" align="center"><FONT POINT-SIZE="12">Interacts with the system for purchasing and account management</FONT></td></tr>
+    </table>
+    >]
+
+    // Define AWS Cognito node
+    Cognito [label=<
+    <table border="0" cellspacing="0" cellborder="0" width="250" height="100">
+      <tr><td width="250" height="30" align="center"><FONT POINT-SIZE="20">AWS Cognito</FONT></td></tr>
+      <tr><td width="250" height="30" align="center"><FONT POINT-SIZE="10">[User Authentication]</FONT></td></tr>
+      <tr><td width="250" height="40" align="center"><FONT POINT-SIZE="12">Manages user authentication and identity</FONT></td></tr>
+    </table>
+    >]
+
+    // Define Amazon EC2 node
+    EC2 [label=<
+    <table border="0" cellspacing="0" cellborder="0" width="250" height="100">
+      <tr><td width="250" height="30" align="center"><FONT POINT-SIZE="20">Amazon EC2</FONT></td></tr>
+      <tr><td width="250" height="30" align="center"><FONT POINT-SIZE="10">[Application Server]</FONT></td></tr>
+      <tr><td width="250" height="40" align="center"><FONT POINT-SIZE="12">Hosts application logic, provides control over the environment</FONT></td></tr>
+    </table>
+    >]
+
+    // Define AWS Elastic Beanstalk node
+    Beanstalk [label=<
+    <table border="0" cellspacing="0" cellborder="0" width="250" height="100">
+      <tr><td width="250" height="30" align="center"><FONT POINT-SIZE="20">AWS Elastic Beanstalk</FONT></td></tr>
+      <tr><td width="250" height="30" align="center"><FONT POINT-SIZE="10">[Application Deployment]</FONT></td></tr>
+      <tr><td width="250" height="40" align="center"><FONT POINT-SIZE="12">Simplifies deployment and scalability of applications</FONT></td></tr>
+    </table>
+    >]
+
+        // Define AWS Lambda node
+    Lambda [label=<
+    <table border="0" cellspacing="0" cellborder="0" width="250" height="100">
+      <tr><td width="250" height="30" align="center"><FONT POINT-SIZE="20">AWS Lambda</FONT></td></tr>
+      <tr><td width="250" height="30" align="center"><FONT POINT-SIZE="10">[Serverless Functions]</FONT></td></tr>
+      <tr><td width="250" height="40" align="center"><FONT POINT-SIZE="12">Runs code in response to events, serverless architecture</FONT></td></tr>
+    </table>
+    >]
+
+    // Define Amazon API Gateway node
+    APIGateway [label=<
+    <table border="0" cellspacing="0" cellborder="0" width="250" height="100">
+      <tr><td width="250" height="30" align="center"><FONT POINT-SIZE="20">Amazon API Gateway</FONT></td></tr>
+      <tr><td width="250" height="30" align="center"><FONT POINT-SIZE="10">[API Management]</FONT></td></tr>
+      <tr><td width="250" height="40" align="center"><FONT POINT-SIZE="12">Manages and secures APIs connecting frontend and backend</FONT></td></tr>
+    </table>
+    >]
+
+    // Define Amazon RDS/Aurora node
+    RDS [label=<
+    <table border="0" cellspacing="0" cellborder="0" width="250" height="100">
+      <tr><td width="250" height="30" align="center"><FONT POINT-SIZE="20">Amazon RDS/Aurora</FONT></td></tr>
+      <tr><td width="250" height="30" align="center"><FONT POINT-SIZE="10">[Relational Database]</FONT></td></tr>
+      <tr><td width="250" height="40" align="center"><FONT POINT-SIZE="12">Manages relational data, ensuring data integrity</FONT></td></tr>
+    </table>
+    >]
+
+    // Additional nodes and edges for services like Amazon S3, AWS Step Functions, Amazon SES/SNS, Amazon CloudWatch, and Amazon S3 + CloudFront would follow similarly
+
+    // Example of another edge
+    EC2 -> APIGateway [label="connects to\nHTTP/REST"]
+    
+    // Continue defining edges for all interactions
+
+
+
+    // Define edges with descriptions and protocols
+    User -> Cognito [label="authenticates with\nhttps/\nusername + password"]
+    // Other edges with appropriate descriptions and protocols
+
+}
