@@ -1,5 +1,7 @@
 digraph ModernVessel {
     node [shape=box];
+    newrank=true
+    graphdir=LR
 
     subgraph cluster_ship {
         style=dashed
