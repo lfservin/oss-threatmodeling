@@ -2,17 +2,18 @@
 
 Data Feeds App
 
-## High-level requirements 
+## High-level requirements
 
+Collect, process, and store (cybersecurity) news feeds from different sources, like hackernews and make it available for an LLM to consume.
 
 ## Detailed requirements
 
 
 ## Context Diagram
-![Forderly Context Diagram](../images/context.png)
+![Context Diagram](./images/context.png)
 
 ## Container Diagram
-![Forderly Container Diagram](../images/container.png)
+![Container Diagram](./images/container.png)
 ## Vulnerabilities
 
 |Id| Title| Vulnerability | Attack scenario | Outcome|Severity|
