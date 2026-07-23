@@ -8,13 +8,16 @@ Collect, process, and store (cybersecurity) news feeds from different sources, l
 
 ## Detailed requirements
 
-
 ## Context Diagram
+
 ![Context Diagram](./images/context.png)
 
 ## Container Diagram
+
 ![Container Diagram](./images/container.png)
+
 ## Vulnerabilities
+
 
 |Id| Title| Vulnerability | Attack scenario | Outcome|Severity|
 |--|--|--|--|--|--|
