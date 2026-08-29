@@ -1,0 +1,133 @@
+digraph petstore_container {
+    label=<<br /><font point-size="34">Pet Store Container Diagram<br/></font><font point-size="20">2025.07.01</font>>
+    labelloc=tc
+    graph [fontname="Arial", rankdir=LR, ranksep=1.0, nodesep=1.0]
+    node[fontname="Arial", shape="plaintext", style=filled, fontcolor="#ffffff", color="#0b4884", fillcolor="#1168bd"]
+    edge [fontname="Arial"]
+
+    /* Entities */
+    subgraph cluster_aws {
+        style=dashed
+        label=<<font point-size="16"><br />AWS</font><br /><font point-size="14">[CSP]</font>>
+        labelloc=bc
+        subgraph cluster_dmz {
+            style=dashed
+            label=<<font point-size="16"><br />DMZ</font><br /><font point-size="14">[Exposed Network]</font>>
+            labelloc=bc
+            gw [label=<
+            <table border="0" cellspacing="0" cellborder="0"  width="250" height="140" fixedsize="true">
+              <tr><td width="200" height="30" fixedsize="true" cellpadding="0" align="text"><FONT POINT-SIZE="20">API GW</FONT></td >
+              <td rowspan="2" width="50" height="60" fixedsize="true" cellpadding="0"><img scale="true" src="../AWS_icons/Arch_App-Integration/64/Arch_Amazon-API-Gateway_64.png"/></td></tr>
+              <tr><td width="200" height="30" cellpadding="0" align="text"><FONT POINT-SIZE="10">[API GW]</FONT></td></tr>
+              <tr><td colspan="2" width="250" height="80" fixedsize="true" cellpadding="0" align="text" balign="left"><FONT POINT-SIZE="12">Control access to the APIs<br/>Check IdP token is presented or redirect to<br/>    cognito</FONT></td></tr>
+            </table>
+            >]
+        }
+
+        cognito [label=<
+            <table border="0" cellspacing="0" cellborder="0"  width="250" height="140" fixedsize="true">
+              <tr><td width="200" height="30" fixedsize="true" cellpadding="0" align="text"><FONT POINT-SIZE="20">Identity Provider</FONT></td >
+              <td rowspan="2" width="50" height="60" fixedsize="true" cellpadding="0"><img scale="true" src="../AWS_icons/Arch_Security-Identity-Compliance/64/Arch_Amazon-Cognito_64.png"/></td></tr>
+              <tr><td width="200" height="30" cellpadding="0" align="text"><FONT POINT-SIZE="10">[cognito PaaS]</FONT></td></tr>
+              <tr><td colspan="2" width="250" height="80" fixedsize="true" cellpadding="0" align="text" balign="left"><FONT POINT-SIZE="12">Identity Provider for customers and employees</FONT></td></tr>
+            </table>
+            >]
+
+        subgraph cluster_Identifier {
+            style=dashed
+            label=<<font point-size="16"><br />Processing Security Group</font><br /><font point-size="14">[AWS SG]</font>>
+            labelloc=bc
+            
+            
+            lambda [label=<
+            <table border="0" cellspacing="0" cellborder="0"  width="250" height="140" fixedsize="true">
+              <tr><td width="200" height="30" fixedsize="true" cellpadding="0" align="text"><FONT POINT-SIZE="20">Service</FONT></td >
+              <td rowspan="2" width="50" height="60" fixedsize="true" cellpadding="0"><img scale="true" src="../AWS_icons/Arch_Compute/64/Arch_AWS-Lambda_64.png"/></td></tr>
+              <tr><td width="200" height="30" cellpadding="0" align="text"><FONT POINT-SIZE="10">[Service functions]</FONT></td></tr>
+              <tr><td colspan="2" width="250" height="80" fixedsize="true" cellpadding="0" align="text" balign="left"><FONT POINT-SIZE="12">Provide the API functionality</FONT></td></tr>
+            </table>
+            >]
+           rds [label=<
+           <table border="0" cellspacing="0" cellborder="0"  width="250" height="140" fixedsize="true">
+             <tr><td width="200" height="30" fixedsize="true" cellpadding="0" align="text"><FONT POINT-SIZE="20">Database</FONT></td >
+             <td rowspan="2" width="50" height="60" fixedsize="true" cellpadding="0"><img scale="true" src="../AWS_icons/Arch_Database/64/Arch_Amazon-RDS_64.png"/></td></tr>
+             <tr><td width="200" height="30" cellpadding="0" align="text"><FONT POINT-SIZE="10">[RDS]</FONT></td></tr>
+             <tr><td colspan="2" width="250" height="80" fixedsize="true" cellpadding="0" align="text" balign="left"><FONT POINT-SIZE="12">Store customer data</FONT></td></tr>
+           </table>
+           >] 
+        }
+        cloudfront [label=<
+        <table border="0" cellspacing="0" cellborder="0"  width="250" height="140" fixedsize="true">
+          <tr><td width="200" height="30" fixedsize="true" cellpadding="0" align="text"><FONT POINT-SIZE="20">Cloudfront</FONT></td >
+          <td rowspan="2" width="50" height="60" fixedsize="true" cellpadding="0"><img scale="true" src="../AWS_icons/Arch_Networking-Content-Delivery/64/Arch_Amazon-CloudFront_64.png"/></td></tr>
+          <tr><td width="200" height="30" cellpadding="0" align="text"><FONT POINT-SIZE="10">[PaaS]</FONT></td></tr>
+          <tr><td colspan="2" width="250" height="80" fixedsize="true" cellpadding="0" align="text" balign="left"><FONT POINT-SIZE="12">Content delivery network <br/></FONT></td></tr>
+        </table>
+        >]
+        s3 [label=<
+        <table border="0" cellspacing="0" cellborder="0"  width="250" height="140" fixedsize="true">
+        <tr><td width="200" height="30" fixedsize="true" cellpadding="0" align="text"><FONT POINT-SIZE="20">App location</FONT></td >
+        <td rowspan="2" width="50" height="60" fixedsize="true" cellpadding="0"><img scale="true" src="../AWS_icons/Arch_Storage/64/Arch_Amazon-Simple-Storage-Service_64.png"/></td></tr>
+        <tr><td width="200" height="30" cellpadding="0" align="text"><FONT POINT-SIZE="10">[PaaS]</FONT></td></tr>
+        <tr><td colspan="2" width="250" height="80" fixedsize="true" cellpadding="0" align="text" balign="left"><FONT POINT-SIZE="12">Stores the SPA<br/>Not reachable from the internet</FONT></td></tr>
+        </table>
+        >]
+        subgraph cluster_authz {
+            style=dashed
+            label=<<font point-size="16"><br />Authorization Security Group</font><br /><font point-size="14">[AWS SG]</font>>
+            labelloc=bc
+            lambda2 [label=<
+            <table border="0" cellspacing="0" cellborder="0"  width="250" height="140" fixedsize="true">
+              <tr><td width="200" height="30" fixedsize="true" cellpadding="0" align="text"><FONT POINT-SIZE="20">Authorization</FONT></td >
+              <td rowspan="2" width="50" height="60" fixedsize="true" cellpadding="0"><img scale="true" src="../AWS_icons/Arch_Compute/64/Arch_AWS-Lambda_64.png"/></td></tr>
+              <tr><td width="200" height="30" cellpadding="0" align="text"><FONT POINT-SIZE="10">[Service functions]</FONT></td></tr>
+              <tr><td colspan="2" width="250" height="80" fixedsize="true" cellpadding="0" align="text" balign="left"><FONT POINT-SIZE="12">Provide the API functionality</FONT></td></tr>
+            </table>
+            >]
+            policyDB [label=<
+            <table border="0" cellspacing="0" cellborder="0"  width="250" height="140" fixedsize="true">
+              <tr><td width="200" height="30" fixedsize="true" cellpadding="0" align="text"><FONT POINT-SIZE="20">Policy DB</FONT></td >
+              <td rowspan="2" width="50" height="60" fixedsize="true" cellpadding="0"><img scale="true" src="../AWS_icons/Arch_Database/64/Arch_Amazon-DynamoDB_64.png"/></td></tr>
+              <tr><td width="200" height="30" cellpadding="0" align="text"><FONT POINT-SIZE="10">[Dynamo]</FONT></td></tr>
+              <tr><td colspan="2" width="250" height="80" fixedsize="true" cellpadding="0" align="text" balign="left"><FONT POINT-SIZE="12">Holds the authorization rules for the different <br/>roles</FONT></td></tr>
+            </table>
+            >]
+        }
+    }
+    
+    petOwner [label=<
+        <table border="0" cellspacing="0" cellborder="0"  width="250" height="140" fixedsize="true">
+          <tr><td width="200" height="30" fixedsize="true" cellpadding="0" align="text"><FONT POINT-SIZE="20">Pet Owner</FONT></td >
+          <td rowspan="2" width="50" height="60" fixedsize="true" cellpadding="0"><img scale="true" src="../images/person.png"/></td></tr>
+          <tr><td width="200" height="30" cellpadding="0" align="text"><FONT POINT-SIZE="10">[Our Customer's customer]</FONT></td></tr>
+          <tr><td colspan="2" width="250" height="80" fixedsize="true" cellpadding="0" align="text" balign="left"><FONT POINT-SIZE="12">Can register as owner<br/>Can register their pet<br/>Can create appointments<br/>Can follow up appointment to pick up pet<br/>Can Pay online</FONT></td></tr>
+        </table>
+        >]
+    vet [label=<
+        <table border="0" cellspacing="0" cellborder="0"  width="250" height="140" fixedsize="true">
+          <tr><td width="200" height="30" fixedsize="true" cellpadding="0" align="text"><FONT POINT-SIZE="20">Pet Store Owner</FONT></td >
+          <td rowspan="2" width="50" height="60" fixedsize="true" cellpadding="0"><img scale="true" src="../images/person.png"/></td></tr>
+          <tr><td width="200" height="30" cellpadding="0" align="text"><FONT POINT-SIZE="10">[Our Customer]</FONT></td></tr>
+          <tr><td colspan="2" width="250" height="80" fixedsize="true" cellpadding="0" align="text" balign="left"><FONT POINT-SIZE="12">Can manage appointments<br/>Can manage personnel attending pets<br/>Can send reminders to customers<br/>Can send promotions and coupons</FONT></td></tr>
+        </table>
+        >]
+    employee [label=<
+        <table border="0" cellspacing="0" cellborder="0"  width="250" height="140" fixedsize="true">
+          <tr><td width="200" height="30" fixedsize="true" cellpadding="0" align="text"><FONT POINT-SIZE="20">Our Employees</FONT></td >
+          <td rowspan="2" width="50" height="60" fixedsize="true" cellpadding="0"><img scale="true" src="../images/person.png"/></td></tr>
+          <tr><td width="200" height="30" cellpadding="0" align="text"><FONT POINT-SIZE="10">[internal user]</FONT></td></tr>
+          <tr><td colspan="2" width="250" height="80" fixedsize="true" cellpadding="0" align="text" balign="left"><FONT POINT-SIZE="12">Represents admin and support users</FONT></td></tr>
+        </table>
+        >]
+    
+    /* Relationships */
+    lambda   ->  rds [label="Do DB operations in\nunencrypted\n[username/pwd]\n{root user}"]
+    petOwner ->  gw[label="Do API request\nhttps\n[jwt]"]
+    gw       ->  lambda[label="Forward API\nrequest to "]
+    petOwner ->  cognito[label="Authenticates with\nReceives JWT from\nhttps\n[username/pwd]"]
+    petOwner ->   cloudfront[label="Retrieves SPA\nhttps\nno auth"]
+    cloudfront -> s3[label="Retrieves SPA\nhttps\nIAM role"]
+    lambda2     -> policyDB [label="Retrieves authorization\nrule for user"]
+    gw          -> lambda2[label="Check authorization\nfor request"]
+    /* Ranks */
+}

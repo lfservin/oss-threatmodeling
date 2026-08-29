@@ -1,0 +1,198 @@
+digraph "terraform-aws-petstore" {
+	compound=true;
+	newrank=true;
+	rankdir=TB;
+	"module.root.local.namespace"->"module.root.random_string.rand"[ shape="", style="solid" ];
+	"module.root.local.namespace"->"module.root.var.namespace"[ shape="", style="dotted" ];
+	"module.root.module.apigw.aws_api_gateway_account.apigw_account"->"module.root.module.apigw.aws_iam_role_policy.cloudwatch"[ shape="", style="solid" ];
+	"module.root.module.apigw.aws_api_gateway_deployment.api_deployment"->"module.root.module.apigw.aws_api_gateway_integration.any_method_integration"[ shape="", style="solid" ];
+	"module.root.module.apigw.aws_api_gateway_integration.any_method_integration"->"module.root.module.apigw.aws_api_gateway_method.auth_any"[ shape="", style="solid" ];
+	"module.root.module.apigw.aws_api_gateway_integration.any_method_integration"->"module.root.module.apigw.data.aws_region.current"[ shape="", style="solid" ];
+	"module.root.module.apigw.aws_api_gateway_integration.any_method_integration"->"module.root.module.apigw.var.lambda_arn"[ shape="", style="dotted" ];
+	"module.root.module.apigw.aws_api_gateway_integration.redirect_integration"->"module.root.module.apigw.aws_api_gateway_method.redirect_method"[ shape="", style="solid" ];
+	"module.root.module.apigw.aws_api_gateway_integration_response.redirect_integration_response"->"module.root.module.apigw.aws_api_gateway_method_response.redirect"[ shape="", style="solid" ];
+	"module.root.module.apigw.aws_api_gateway_method.auth_any"->"module.root.module.apigw.aws_api_gateway_resource.proxy"[ shape="", style="solid" ];
+	"module.root.module.apigw.aws_api_gateway_method.redirect_method"->"module.root.module.apigw.aws_api_gateway_rest_api.api"[ shape="", style="solid" ];
+	"module.root.module.apigw.aws_api_gateway_method_response.redirect"->"module.root.module.apigw.aws_api_gateway_method.redirect_method"[ shape="", style="solid" ];
+	"module.root.module.apigw.aws_api_gateway_resource.proxy"->"module.root.module.apigw.aws_api_gateway_rest_api.api"[ shape="", style="solid" ];
+	"module.root.module.apigw.aws_api_gateway_rest_api.api"->"module.root.module.apigw.var.namespace"[ shape="", style="dotted" ];
+	"module.root.module.apigw.aws_iam_role.cloudwatch"->"module.root.module.apigw.var.namespace"[ shape="", style="dotted" ];
+	"module.root.module.apigw.aws_iam_role_policy.cloudwatch"->"module.root.module.apigw.aws_iam_role.cloudwatch"[ shape="", style="solid" ];
+	"module.root.module.apigw.aws_lambda_permission.lambda_permission_api_gateway"->"module.root.module.apigw.aws_api_gateway_rest_api.api"[ shape="", style="solid" ];
+	"module.root.module.apigw.aws_lambda_permission.lambda_permission_api_gateway"->"module.root.module.apigw.data.aws_caller_identity.current"[ shape="", style="solid" ];
+	"module.root.module.apigw.aws_lambda_permission.lambda_permission_api_gateway"->"module.root.module.apigw.data.aws_region.current"[ shape="", style="solid" ];
+	"module.root.module.apigw.aws_lambda_permission.lambda_permission_api_gateway"->"module.root.module.apigw.var.lambda_arn"[ shape="", style="dotted" ];
+	"module.root.module.apigw.output.invoke_url"->"module.root.module.apigw.aws_api_gateway_deployment.api_deployment"[ shape="", style="solid" ];
+	"module.root.module.apigw.var.lambda_arn"->"module.root.module.lambda.output.lambda_arn"[ shape="", style="dashed" ];
+	"module.root.module.apigw.var.namespace"->"module.root.local.namespace"[ shape="", style="dotted" ];
+	"module.root.module.database.aws_rds_cluster.rds_cluster"->"module.root.module.database.data.aws_region.current"[ shape="", style="solid" ];
+	"module.root.module.database.aws_rds_cluster.rds_cluster"->"module.root.module.database.var.namespace"[ shape="", style="dotted" ];
+	"module.root.module.database.aws_rds_cluster.rds_cluster"->"module.root.module.database.var.rds_password"[ shape="", style="dotted" ];
+	"module.root.module.database.aws_rds_cluster.rds_cluster"->"module.root.module.database.var.rds_user"[ shape="", style="dotted" ];
+	"module.root.module.database.aws_rds_cluster.rds_cluster"->"module.root.module.database.var.sg"[ shape="", style="dotted" ];
+	"module.root.module.database.output.rds_database"->"module.root.module.database.aws_rds_cluster.rds_cluster"[ shape="", style="solid" ];
+	"module.root.module.database.output.rds_host"->"module.root.module.database.aws_rds_cluster.rds_cluster"[ shape="", style="solid" ];
+	"module.root.module.database.output.rds_port"->"module.root.module.database.aws_rds_cluster.rds_cluster"[ shape="", style="solid" ];
+	"module.root.module.database.var.namespace"->"module.root.local.namespace"[ shape="", style="dotted" ];
+	"module.root.module.database.var.rds_password"->"module.root.var.rds_password"[ shape="", style="dotted" ];
+	"module.root.module.database.var.rds_user"->"module.root.var.rds_user"[ shape="", style="dotted" ];
+	"module.root.module.database.var.sg"->"module.root.module.networking.output.sg"[ shape="", style="dashed" ];
+	"module.root.module.lambda.aws_default_subnet.default_az1"->"module.root.module.lambda.data.aws_region.current"[ shape="", style="solid" ];
+	"module.root.module.lambda.aws_default_subnet.default_az2"->"module.root.module.lambda.data.aws_region.current"[ shape="", style="solid" ];
+	"module.root.module.lambda.aws_default_subnet.default_az3"->"module.root.module.lambda.data.aws_region.current"[ shape="", style="solid" ];
+	"module.root.module.lambda.aws_iam_policy.lambda_iam_policy"->"module.root.module.lambda.data.aws_iam_policy_document.lambda_iam_policy_document"[ shape="", style="solid" ];
+	"module.root.module.lambda.aws_iam_policy.lambda_iam_policy"->"module.root.module.lambda.var.namespace"[ shape="", style="dotted" ];
+	"module.root.module.lambda.aws_iam_policy_attachment.lambda_iam_policy_role_attachment"->"module.root.module.lambda.aws_iam_policy.lambda_iam_policy"[ shape="", style="solid" ];
+	"module.root.module.lambda.aws_iam_policy_attachment.lambda_iam_policy_role_attachment"->"module.root.module.lambda.aws_iam_role.lambda_role"[ shape="", style="solid" ];
+	"module.root.module.lambda.aws_iam_role.lambda_role"->"module.root.module.lambda.data.aws_iam_policy_document.lambda_assume_role_policy_document"[ shape="", style="solid" ];
+	"module.root.module.lambda.aws_iam_role.lambda_role"->"module.root.module.lambda.var.namespace"[ shape="", style="dotted" ];
+	"module.root.module.lambda.aws_lambda_function.lambda_function"->"module.root.module.lambda.aws_default_subnet.default_az1"[ shape="", style="solid" ];
+	"module.root.module.lambda.aws_lambda_function.lambda_function"->"module.root.module.lambda.aws_default_subnet.default_az2"[ shape="", style="solid" ];
+	"module.root.module.lambda.aws_lambda_function.lambda_function"->"module.root.module.lambda.aws_default_subnet.default_az3"[ shape="", style="solid" ];
+	"module.root.module.lambda.aws_lambda_function.lambda_function"->"module.root.module.lambda.aws_iam_role.lambda_role"[ shape="", style="solid" ];
+	"module.root.module.lambda.aws_lambda_function.lambda_function"->"module.root.module.lambda.var.rds_database"[ shape="", style="dotted" ];
+	"module.root.module.lambda.aws_lambda_function.lambda_function"->"module.root.module.lambda.var.rds_host"[ shape="", style="dotted" ];
+	"module.root.module.lambda.aws_lambda_function.lambda_function"->"module.root.module.lambda.var.rds_password"[ shape="", style="dotted" ];
+	"module.root.module.lambda.aws_lambda_function.lambda_function"->"module.root.module.lambda.var.rds_port"[ shape="", style="dotted" ];
+	"module.root.module.lambda.aws_lambda_function.lambda_function"->"module.root.module.lambda.var.rds_user"[ shape="", style="dotted" ];
+	"module.root.module.lambda.aws_lambda_function.lambda_function"->"module.root.module.lambda.var.sg"[ shape="", style="dotted" ];
+	"module.root.module.lambda.output.lambda_arn"->"module.root.module.lambda.aws_lambda_function.lambda_function"[ shape="", style="solid" ];
+	"module.root.module.lambda.var.namespace"->"module.root.local.namespace"[ shape="", style="dotted" ];
+	"module.root.module.lambda.var.rds_database"->"module.root.module.database.output.rds_database"[ shape="", style="dashed" ];
+	"module.root.module.lambda.var.rds_host"->"module.root.module.database.output.rds_host"[ shape="", style="dashed" ];
+	"module.root.module.lambda.var.rds_password"->"module.root.var.rds_password"[ shape="", style="dotted" ];
+	"module.root.module.lambda.var.rds_port"->"module.root.module.database.output.rds_port"[ shape="", style="dashed" ];
+	"module.root.module.lambda.var.rds_user"->"module.root.var.rds_user"[ shape="", style="dotted" ];
+	"module.root.module.lambda.var.sg"->"module.root.module.networking.output.sg"[ shape="", style="dashed" ];
+	"module.root.module.networking.module.db_sg.aws_security_group.security_group"->"module.root.module.networking.module.db_sg.local.egress_rules"[ shape="", style="dotted" ];
+	"module.root.module.networking.module.db_sg.aws_security_group.security_group"->"module.root.module.networking.module.db_sg.local.ingress_rules"[ shape="", style="dotted" ];
+	"module.root.module.networking.module.db_sg.aws_security_group.security_group"->"module.root.module.networking.module.db_sg.var.description"[ shape="", style="dotted" ];
+	"module.root.module.networking.module.db_sg.aws_security_group.security_group"->"module.root.module.networking.module.db_sg.var.name"[ shape="", style="dotted" ];
+	"module.root.module.networking.module.db_sg.aws_security_group.security_group"->"module.root.module.networking.module.db_sg.var.vpc_id"[ shape="", style="dotted" ];
+	"module.root.module.networking.module.db_sg.local.egress_rules"->"module.root.module.networking.module.db_sg.var.egress_rules"[ shape="", style="dotted" ];
+	"module.root.module.networking.module.db_sg.local.ingress_rules"->"module.root.module.networking.module.db_sg.var.ingress_rules"[ shape="", style="dotted" ];
+	"module.root.module.networking.module.db_sg.output.security_group"->"module.root.module.networking.module.db_sg.aws_security_group.security_group"[ shape="", style="solid" ];
+	"module.root.module.networking.module.db_sg.var.ingress_rules"->"module.root.module.networking.module.lambda_sg.output.security_group"[ shape="", style="dashed" ];
+	"module.root.module.networking.module.db_sg.var.vpc_id"->"module.root.module.networking.aws_default_vpc.default"[ shape="", style="solid" ];
+	"module.root.module.networking.module.lambda_sg.aws_security_group.security_group"->"module.root.module.networking.module.lambda_sg.local.egress_rules"[ shape="", style="dotted" ];
+	"module.root.module.networking.module.lambda_sg.aws_security_group.security_group"->"module.root.module.networking.module.lambda_sg.local.ingress_rules"[ shape="", style="dotted" ];
+	"module.root.module.networking.module.lambda_sg.aws_security_group.security_group"->"module.root.module.networking.module.lambda_sg.var.description"[ shape="", style="dotted" ];
+	"module.root.module.networking.module.lambda_sg.aws_security_group.security_group"->"module.root.module.networking.module.lambda_sg.var.name"[ shape="", style="dotted" ];
+	"module.root.module.networking.module.lambda_sg.aws_security_group.security_group"->"module.root.module.networking.module.lambda_sg.var.vpc_id"[ shape="", style="dotted" ];
+	"module.root.module.networking.module.lambda_sg.local.egress_rules"->"module.root.module.networking.module.lambda_sg.var.egress_rules"[ shape="", style="dotted" ];
+	"module.root.module.networking.module.lambda_sg.local.ingress_rules"->"module.root.module.networking.module.lambda_sg.var.ingress_rules"[ shape="", style="dotted" ];
+	"module.root.module.networking.module.lambda_sg.output.security_group"->"module.root.module.networking.module.lambda_sg.aws_security_group.security_group"[ shape="", style="solid" ];
+	"module.root.module.networking.module.lambda_sg.var.vpc_id"->"module.root.module.networking.aws_default_vpc.default"[ shape="", style="solid" ];
+	"module.root.module.networking.output.sg"->"module.root.module.networking.module.db_sg.output.security_group"[ shape="", style="dashed" ];
+	"module.root.module.networking.var.namespace"->"module.root.local.namespace"[ shape="", style="dotted" ];
+	"module.root.output.address"->"module.root.module.apigw.output.invoke_url"[ shape="", style="dashed" ];
+	subgraph "cluster_module.root" {
+	label="module.root";
+	subgraph "cluster_module.root.module.apigw" {
+	label="module.apigw";
+	"module.root.module.apigw.aws_api_gateway_account.apigw_account" [ label="aws_api_gateway_account.apigw_account", shape="box", style="rounded" ];
+	"module.root.module.apigw.aws_api_gateway_deployment.api_deployment" [ label="aws_api_gateway_deployment.api_deployment", shape="box", style="rounded" ];
+	"module.root.module.apigw.aws_api_gateway_integration.any_method_integration" [ label="aws_api_gateway_integration.any_method_integration", shape="box", style="rounded" ];
+	"module.root.module.apigw.aws_api_gateway_integration.redirect_integration" [ label="aws_api_gateway_integration.redirect_integration", shape="box", style="rounded" ];
+	"module.root.module.apigw.aws_api_gateway_integration_response.redirect_integration_response" [ label="aws_api_gateway_integration_response.redirect_integration_response", shape="box", style="rounded" ];
+	"module.root.module.apigw.aws_api_gateway_method.auth_any" [ label="aws_api_gateway_method.auth_any", shape="box", style="rounded" ];
+	"module.root.module.apigw.aws_api_gateway_method.redirect_method" [ label="aws_api_gateway_method.redirect_method", shape="box", style="rounded" ];
+	"module.root.module.apigw.aws_api_gateway_method_response.redirect" [ label="aws_api_gateway_method_response.redirect", shape="box", style="rounded" ];
+	"module.root.module.apigw.aws_api_gateway_resource.proxy" [ label="aws_api_gateway_resource.proxy", shape="box", style="rounded" ];
+	"module.root.module.apigw.aws_api_gateway_rest_api.api" [ label="aws_api_gateway_rest_api.api", shape="box", style="rounded" ];
+	"module.root.module.apigw.aws_iam_role.cloudwatch" [ label="aws_iam_role.cloudwatch", shape="box", style="rounded" ];
+	"module.root.module.apigw.aws_iam_role_policy.cloudwatch" [ label="aws_iam_role_policy.cloudwatch", shape="box", style="rounded" ];
+	"module.root.module.apigw.aws_lambda_permission.lambda_permission_api_gateway" [ label="aws_lambda_permission.lambda_permission_api_gateway", shape="box", style="rounded" ];
+	"module.root.module.apigw.data.aws_caller_identity.current" [ label="data.aws_caller_identity.current", shape="box", style="rounded" ];
+	"module.root.module.apigw.data.aws_region.current" [ label="data.aws_region.current", shape="box", style="rounded" ];
+	"module.root.module.apigw.output.invoke_url" [ label="output.invoke_url", shape="note", style="" ];
+	"module.root.module.apigw.var.lambda_arn" [ label="var.lambda_arn", shape="ellipse", style="" ];
+	"module.root.module.apigw.var.namespace" [ label="var.namespace", shape="ellipse", style="" ];
+
+}
+;
+	subgraph "cluster_module.root.module.database" {
+	label="module.database";
+	"module.root.module.database.aws_rds_cluster.rds_cluster" [ label="aws_rds_cluster.rds_cluster", shape="box", style="rounded" ];
+	"module.root.module.database.data.aws_region.current" [ label="data.aws_region.current", shape="box", style="rounded" ];
+	"module.root.module.database.output.rds_database" [ label="output.rds_database", shape="note", style="" ];
+	"module.root.module.database.output.rds_host" [ label="output.rds_host", shape="note", style="" ];
+	"module.root.module.database.output.rds_port" [ label="output.rds_port", shape="note", style="" ];
+	"module.root.module.database.var.namespace" [ label="var.namespace", shape="ellipse", style="" ];
+	"module.root.module.database.var.rds_password" [ label="var.rds_password", shape="ellipse", style="" ];
+	"module.root.module.database.var.rds_user" [ label="var.rds_user", shape="ellipse", style="" ];
+	"module.root.module.database.var.sg" [ label="var.sg", shape="ellipse", style="" ];
+
+}
+;
+	subgraph "cluster_module.root.module.lambda" {
+	label="module.lambda";
+	"module.root.module.lambda.aws_default_subnet.default_az1" [ label="aws_default_subnet.default_az1", shape="box", style="rounded" ];
+	"module.root.module.lambda.aws_default_subnet.default_az2" [ label="aws_default_subnet.default_az2", shape="box", style="rounded" ];
+	"module.root.module.lambda.aws_default_subnet.default_az3" [ label="aws_default_subnet.default_az3", shape="box", style="rounded" ];
+	"module.root.module.lambda.aws_iam_policy.lambda_iam_policy" [ label="aws_iam_policy.lambda_iam_policy", shape="box", style="rounded" ];
+	"module.root.module.lambda.aws_iam_policy_attachment.lambda_iam_policy_role_attachment" [ label="aws_iam_policy_attachment.lambda_iam_policy_role_attachment", shape="box", style="rounded" ];
+	"module.root.module.lambda.aws_iam_role.lambda_role" [ label="aws_iam_role.lambda_role", shape="box", style="rounded" ];
+	"module.root.module.lambda.aws_lambda_function.lambda_function" [ label="aws_lambda_function.lambda_function", shape="box", style="rounded" ];
+	"module.root.module.lambda.data.aws_iam_policy_document.lambda_assume_role_policy_document" [ label="data.aws_iam_policy_document.lambda_assume_role_policy_document", shape="box", style="rounded" ];
+	"module.root.module.lambda.data.aws_iam_policy_document.lambda_iam_policy_document" [ label="data.aws_iam_policy_document.lambda_iam_policy_document", shape="box", style="rounded" ];
+	"module.root.module.lambda.data.aws_region.current" [ label="data.aws_region.current", shape="box", style="rounded" ];
+	"module.root.module.lambda.output.lambda_arn" [ label="output.lambda_arn", shape="note", style="" ];
+	"module.root.module.lambda.var.namespace" [ label="var.namespace", shape="ellipse", style="" ];
+	"module.root.module.lambda.var.rds_database" [ label="var.rds_database", shape="ellipse", style="" ];
+	"module.root.module.lambda.var.rds_host" [ label="var.rds_host", shape="ellipse", style="" ];
+	"module.root.module.lambda.var.rds_password" [ label="var.rds_password", shape="ellipse", style="" ];
+	"module.root.module.lambda.var.rds_port" [ label="var.rds_port", shape="ellipse", style="" ];
+	"module.root.module.lambda.var.rds_user" [ label="var.rds_user", shape="ellipse", style="" ];
+	"module.root.module.lambda.var.sg" [ label="var.sg", shape="ellipse", style="" ];
+
+}
+;
+	subgraph "cluster_module.root.module.networking" {
+	label="module.networking";
+	subgraph "cluster_module.root.module.networking.module.db_sg" {
+	label="module.db_sg";
+	"module.root.module.networking.module.db_sg.aws_security_group.security_group" [ label="aws_security_group.security_group", shape="box", style="rounded" ];
+	"module.root.module.networking.module.db_sg.local.egress_rules" [ label="local.egress_rules", shape="ellipse", style="" ];
+	"module.root.module.networking.module.db_sg.local.ingress_rules" [ label="local.ingress_rules", shape="ellipse", style="" ];
+	"module.root.module.networking.module.db_sg.output.security_group" [ label="output.security_group", shape="note", style="" ];
+	"module.root.module.networking.module.db_sg.var.description" [ label="var.description", shape="ellipse", style="" ];
+	"module.root.module.networking.module.db_sg.var.egress_rules" [ label="var.egress_rules", shape="ellipse", style="" ];
+	"module.root.module.networking.module.db_sg.var.ingress_rules" [ label="var.ingress_rules", shape="ellipse", style="" ];
+	"module.root.module.networking.module.db_sg.var.name" [ label="var.name", shape="ellipse", style="" ];
+	"module.root.module.networking.module.db_sg.var.vpc_id" [ label="var.vpc_id", shape="ellipse", style="" ];
+
+}
+;
+	subgraph "cluster_module.root.module.networking.module.lambda_sg" {
+	label="module.lambda_sg";
+	"module.root.module.networking.module.lambda_sg.aws_security_group.security_group" [ label="aws_security_group.security_group", shape="box", style="rounded" ];
+	"module.root.module.networking.module.lambda_sg.local.egress_rules" [ label="local.egress_rules", shape="ellipse", style="" ];
+	"module.root.module.networking.module.lambda_sg.local.ingress_rules" [ label="local.ingress_rules", shape="ellipse", style="" ];
+	"module.root.module.networking.module.lambda_sg.output.security_group" [ label="output.security_group", shape="note", style="" ];
+	"module.root.module.networking.module.lambda_sg.var.description" [ label="var.description", shape="ellipse", style="" ];
+	"module.root.module.networking.module.lambda_sg.var.egress_rules" [ label="var.egress_rules", shape="ellipse", style="" ];
+	"module.root.module.networking.module.lambda_sg.var.ingress_rules" [ label="var.ingress_rules", shape="ellipse", style="" ];
+	"module.root.module.networking.module.lambda_sg.var.name" [ label="var.name", shape="ellipse", style="" ];
+	"module.root.module.networking.module.lambda_sg.var.vpc_id" [ label="var.vpc_id", shape="ellipse", style="" ];
+
+}
+;
+	"module.root.module.networking.aws_default_vpc.default" [ label="aws_default_vpc.default", shape="box", style="rounded" ];
+	"module.root.module.networking.data.aws_availability_zones.available" [ label="data.aws_availability_zones.available", shape="box", style="rounded" ];
+	"module.root.module.networking.output.sg" [ label="output.sg", shape="note", style="" ];
+	"module.root.module.networking.var.namespace" [ label="var.namespace", shape="ellipse", style="" ];
+
+}
+;
+	"module.root.local.namespace" [ label="local.namespace", shape="ellipse", style="" ];
+	"module.root.output.address" [ label="output.address", shape="note", style="" ];
+	"module.root.random_string.rand" [ label="random_string.rand", shape="box", style="rounded" ];
+	"module.root.var.namespace" [ label="var.namespace", shape="ellipse", style="" ];
+	"module.root.var.rds_password" [ label="var.rds_password", shape="ellipse", style="" ];
+	"module.root.var.rds_user" [ label="var.rds_user", shape="ellipse", style="" ];
+
+}
+;
+
+}

@@ -1,0 +1,18 @@
+digraph test {
+    label=<<br /><font point-size="34">Test Diagram<br/></font><font point-size="20">2023.11.14</font>>
+    labelloc=tc
+    graph [fontname="Arial", rankdir=TB, ranksep=1.0, nodesep=1.0]
+    node[fontname="Arial", shape="plaintext", style=filled, fontcolor="#ffffff", color="#0b4884", fillcolor="#1168bd"]
+    edge [fontname="Arial"]
+
+    /* Entities */
+    one
+    two
+    three[fillcolor="#afafaf"]
+    /* Relationships */
+    one->two[label="hello friend"]
+    one->three[label="hello foreigner"]
+
+    htm
+    /* Ranks */
+}

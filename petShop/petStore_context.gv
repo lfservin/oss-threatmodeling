@@ -1,0 +1,104 @@
+digraph petStore_context {
+    label=<<br /><font point-size="34">Pet Store Context Diagram<br/></font><font point-size="20">2025.07.01</font>>
+    labelloc=tc
+    newrank=1
+    
+    graph [fontname="Arial", rankdir=LR, ranksep=1.0, nodesep=1.0]
+    node[fontname="Arial", shape="plaintext", style=filled, fontcolor="#ffffff", color="#0b4884", fillcolor="#1168bd"]
+    edge [fontname="Arial"]
+
+    /* Entities */
+
+    petOwner [label=<
+        <table border="0" cellspacing="0" cellborder="0"  width="250" height="140" fixedsize="true">
+          <tr><td width="200" height="30" fixedsize="true" cellpadding="0" align="text"><FONT POINT-SIZE="20">Pet Owner</FONT></td >
+          <td rowspan="2" width="50" height="60" fixedsize="true" cellpadding="0"><img scale="true" src="../images/person.png"/></td></tr>
+          <tr><td width="200" height="30" cellpadding="0" align="text"><FONT POINT-SIZE="10">[Our Customer's customer]</FONT></td></tr>
+          <tr><td colspan="2" width="250" height="80" fixedsize="true" cellpadding="0" align="text" balign="left"><FONT POINT-SIZE="12">Can register as owner<br/>Can register their pet<br/>Can create appointments<br/>Can follow up appointment to pick up pet<br/>Can Pay online</FONT></td></tr>
+        </table>
+        >]
+
+        vet [label=<
+        <table border="0" cellspacing="0" cellborder="0"  width="250" height="140" fixedsize="true">
+          <tr><td width="200" height="30" fixedsize="true" cellpadding="0" align="text"><FONT POINT-SIZE="20">Pet Store Owner</FONT></td >
+          <td rowspan="2" width="50" height="60" fixedsize="true" cellpadding="0"><img scale="true" src="../images/person.png"/></td></tr>
+          <tr><td width="200" height="30" cellpadding="0" align="text"><FONT POINT-SIZE="10">[Our Customer]</FONT></td></tr>
+          <tr><td colspan="2" width="250" height="80" fixedsize="true" cellpadding="0" align="text" balign="left"><FONT POINT-SIZE="12">Can manage appointments<br/>Can manage personnel attending pets<br/>Can send reminders to customers<br/>Can send promotions and coupons</FONT></td></tr>
+        </table>
+        >]
+        
+
+    subgraph cluster_aws {
+        style=dashed
+        label=<<font point-size="16"><br />AWS</font><br /><font point-size="14">[Cloud Service Provider]</font>>
+        labelloc=bc
+
+        petStore [label=<
+        <table border="0" cellspacing="0" cellborder="0"  width="250" height="140" fixedsize="true">
+          <tr><td width="200" height="30" fixedsize="true" cellpadding="0" align="text"><FONT POINT-SIZE="20">Pet Store</FONT></td >
+          <td rowspan="2" width="50" height="60" fixedsize="true" cellpadding="0"><img scale="true" src="../images/paws.png"/></td></tr>
+          <tr><td width="200" height="30" cellpadding="0" align="text"><FONT POINT-SIZE="10">[SaaS]</FONT></td></tr>
+          <tr><td colspan="2" width="250" height="80" fixedsize="true" cellpadding="0" align="text" balign="left"><FONT POINT-SIZE="12">Serves multiple pet owners and<br/>pet store owners</FONT></td></tr>
+        </table>
+        >]
+
+    }
+
+    payment [color="#6b6b6b", fillcolor="#BFBFBF", fontcolor="#ffffff"label=<
+    <table border="0" cellspacing="0" cellborder="0"  width="250" height="140" fixedsize="true">
+      <tr><td width="200" height="30" fixedsize="true" cellpadding="0" align="text"><FONT POINT-SIZE="20">Payment Provider</FONT></td >
+      <td rowspan="2" width="50" height="60" fixedsize="true" cellpadding="0"><img scale="true" src="../images/stripe.png"/></td></tr>
+      <tr><td width="200" height="30" cellpadding="0" align="text"><FONT POINT-SIZE="10">[SaaS]</FONT></td></tr>
+      <tr><td colspan="2" width="250" height="80" fixedsize="true" cellpadding="0" align="text" balign="left"><FONT POINT-SIZE="12">Payment Provider</FONT></td></tr>
+    </table>
+    >]
+
+    subgraph cluster_us {
+      style=dashed
+      label=<<font point-size="16"><br />Our network</font><br /><font point-size="14">[Internal Users]</font>>
+      labelloc=bc
+      dev [label=<
+      <table border="0" cellspacing="0" cellborder="0"  width="250" height="140" fixedsize="true">
+        <tr><td width="200" height="30" fixedsize="true" cellpadding="0" align="text"><FONT POINT-SIZE="20">Developer</FONT></td >
+        <td rowspan="2" width="50" height="60" fixedsize="true" cellpadding="0"><img scale="true" src="../images/person.png"/></td></tr>
+        <tr><td width="200" height="30" cellpadding="0" align="text"><FONT POINT-SIZE="10">[employee]</FONT></td></tr>
+        <tr><td colspan="2" width="250" height="80" fixedsize="true" cellpadding="0" align="text" balign="left"><FONT POINT-SIZE="12">Develops the pet store SaaS solution</FONT></td></tr>
+      </table>
+      >]
+      ops [label=<
+      <table border="0" cellspacing="0" cellborder="0"  width="250" height="140" fixedsize="true">
+        <tr><td width="200" height="30" fixedsize="true" cellpadding="0" align="text"><FONT POINT-SIZE="20">Ops</FONT></td >
+        <td rowspan="2" width="50" height="60" fixedsize="true" cellpadding="0"><img scale="true" src="../images/person.png"/></td></tr>
+        <tr><td width="200" height="30" cellpadding="0" align="text"><FONT POINT-SIZE="10">[employee]</FONT></td></tr>
+        <tr><td colspan="2" width="250" height="80" fixedsize="true" cellpadding="0" align="text" balign="left"><FONT POINT-SIZE="12">takes care of the infrastructure<br/>keeps the lights on for the solution</FONT></td></tr>
+      </table>
+      >]
+      admin [label=<
+      <table border="0" cellspacing="0" cellborder="0"  width="250" height="140" fixedsize="true">
+        <tr><td width="200" height="30" fixedsize="true" cellpadding="0" align="text"><FONT POINT-SIZE="20">Administrator</FONT></td >
+        <td rowspan="2" width="50" height="60" fixedsize="true" cellpadding="0"><img scale="true" src="../images/person.png"/></td></tr>
+        <tr><td width="200" height="30" cellpadding="0" align="text"><FONT POINT-SIZE="10">[employee]</FONT></td></tr>
+        <tr><td colspan="2" width="250" height="80" fixedsize="true" cellpadding="0" align="text" balign="left"><FONT POINT-SIZE="12">Manage the application<br/>Manage our internal users</FONT></td></tr>
+      </table>
+      >]
+      support [label=<
+      <table border="0" cellspacing="0" cellborder="0"  width="250" height="140" fixedsize="true">
+        <tr><td width="200" height="30" fixedsize="true" cellpadding="0" align="text"><FONT POINT-SIZE="20">Support</FONT></td >
+        <td rowspan="2" width="50" height="60" fixedsize="true" cellpadding="0"><img scale="true" src="../images/person.png"/></td></tr>
+        <tr><td width="200" height="30" cellpadding="0" align="text"><FONT POINT-SIZE="10">[Employee]</FONT></td></tr>
+        <tr><td colspan="2" width="250" height="80" fixedsize="true" cellpadding="0" align="text" balign="left"><FONT POINT-SIZE="12">Customer support, etc</FONT></td></tr>
+      </table>
+      >]
+    }
+    /* Relationships */
+
+  petOwner  ->  petStore [label="Interacts with"]
+  vet       ->  petStore[label="Interacts with\n"]
+  petStore  ->  payment
+  dev       ->  petStore[label="develops"]
+  ops       ->  petStore[label="operates the infra from"]
+  admin     ->  petStore[label="Manages stores,\ninternal employees"]
+  // support   ->  petStore[label="Helps users with enquiries"]
+    /* Ranks */
+    { rank=same; petStore, ops, support };
+}

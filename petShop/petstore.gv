@@ -1,0 +1,205 @@
+digraph {
+	compound = "true"
+	newrank = "true"
+	subgraph "root" {
+		"[root] module.apigw.aws_api_gateway_account.apigw_account (expand)" [label = "module.apigw.aws_api_gateway_account.apigw_account", shape = "box"]
+		"[root] module.apigw.aws_api_gateway_deployment.api_deployment (expand)" [label = "module.apigw.aws_api_gateway_deployment.api_deployment", shape = "box"]
+		"[root] module.apigw.aws_api_gateway_integration.any_method_integration (expand)" [label = "module.apigw.aws_api_gateway_integration.any_method_integration", shape = "box"]
+		"[root] module.apigw.aws_api_gateway_integration.redirect_integration (expand)" [label = "module.apigw.aws_api_gateway_integration.redirect_integration", shape = "box"]
+		"[root] module.apigw.aws_api_gateway_integration_response.redirect_integration_response (expand)" [label = "module.apigw.aws_api_gateway_integration_response.redirect_integration_response", shape = "box"]
+		"[root] module.apigw.aws_api_gateway_method.auth_any (expand)" [label = "module.apigw.aws_api_gateway_method.auth_any", shape = "box"]
+		"[root] module.apigw.aws_api_gateway_method.redirect_method (expand)" [label = "module.apigw.aws_api_gateway_method.redirect_method", shape = "box"]
+		"[root] module.apigw.aws_api_gateway_method_response.redirect (expand)" [label = "module.apigw.aws_api_gateway_method_response.redirect", shape = "box"]
+		"[root] module.apigw.aws_api_gateway_resource.proxy (expand)" [label = "module.apigw.aws_api_gateway_resource.proxy", shape = "box"]
+		"[root] module.apigw.aws_api_gateway_rest_api.api (expand)" [label = "module.apigw.aws_api_gateway_rest_api.api", shape = "box"]
+		"[root] module.apigw.aws_iam_role.cloudwatch (expand)" [label = "module.apigw.aws_iam_role.cloudwatch", shape = "box"]
+		"[root] module.apigw.aws_iam_role_policy.cloudwatch (expand)" [label = "module.apigw.aws_iam_role_policy.cloudwatch", shape = "box"]
+		"[root] module.apigw.aws_lambda_permission.lambda_permission_api_gateway (expand)" [label = "module.apigw.aws_lambda_permission.lambda_permission_api_gateway", shape = "box"]
+		"[root] module.apigw.data.aws_caller_identity.current (expand)" [label = "module.apigw.data.aws_caller_identity.current", shape = "box"]
+		"[root] module.apigw.data.aws_region.current (expand)" [label = "module.apigw.data.aws_region.current", shape = "box"]
+		"[root] module.database.aws_rds_cluster.rds_cluster (expand)" [label = "module.database.aws_rds_cluster.rds_cluster", shape = "box"]
+		"[root] module.database.data.aws_region.current (expand)" [label = "module.database.data.aws_region.current", shape = "box"]
+		"[root] module.lambda.aws_default_subnet.default_az1 (expand)" [label = "module.lambda.aws_default_subnet.default_az1", shape = "box"]
+		"[root] module.lambda.aws_default_subnet.default_az2 (expand)" [label = "module.lambda.aws_default_subnet.default_az2", shape = "box"]
+		"[root] module.lambda.aws_default_subnet.default_az3 (expand)" [label = "module.lambda.aws_default_subnet.default_az3", shape = "box"]
+		"[root] module.lambda.aws_iam_policy.lambda_iam_policy (expand)" [label = "module.lambda.aws_iam_policy.lambda_iam_policy", shape = "box"]
+		"[root] module.lambda.aws_iam_policy_attachment.lambda_iam_policy_role_attachment (expand)" [label = "module.lambda.aws_iam_policy_attachment.lambda_iam_policy_role_attachment", shape = "box"]
+		"[root] module.lambda.aws_iam_role.lambda_role (expand)" [label = "module.lambda.aws_iam_role.lambda_role", shape = "box"]
+		"[root] module.lambda.aws_lambda_function.lambda_function (expand)" [label = "module.lambda.aws_lambda_function.lambda_function", shape = "box"]
+		"[root] module.lambda.data.aws_iam_policy_document.lambda_assume_role_policy_document (expand)" [label = "module.lambda.data.aws_iam_policy_document.lambda_assume_role_policy_document", shape = "box"]
+		"[root] module.lambda.data.aws_iam_policy_document.lambda_iam_policy_document (expand)" [label = "module.lambda.data.aws_iam_policy_document.lambda_iam_policy_document", shape = "box"]
+		"[root] module.lambda.data.aws_region.current (expand)" [label = "module.lambda.data.aws_region.current", shape = "box"]
+		"[root] module.networking.aws_default_vpc.default (expand)" [label = "module.networking.aws_default_vpc.default", shape = "box"]
+		"[root] module.networking.data.aws_availability_zones.available (expand)" [label = "module.networking.data.aws_availability_zones.available", shape = "box"]
+		"[root] module.networking.module.db_sg.aws_security_group.security_group (expand)" [label = "module.networking.module.db_sg.aws_security_group.security_group", shape = "box"]
+		"[root] module.networking.module.lambda_sg.aws_security_group.security_group (expand)" [label = "module.networking.module.lambda_sg.aws_security_group.security_group", shape = "box"]
+		"[root] provider[\"registry.terraform.io/hashicorp/aws\"]" [label = "provider[\"registry.terraform.io/hashicorp/aws\"]", shape = "diamond"]
+		"[root] provider[\"registry.terraform.io/hashicorp/random\"]" [label = "provider[\"registry.terraform.io/hashicorp/random\"]", shape = "diamond"]
+		"[root] random_string.rand (expand)" [label = "random_string.rand", shape = "box"]
+		"[root] var.namespace" [label = "var.namespace", shape = "note"]
+		"[root] var.rds_password" [label = "var.rds_password", shape = "note"]
+		"[root] var.rds_user" [label = "var.rds_user", shape = "note"]
+		"[root] local.namespace (expand)" -> "[root] random_string.rand (expand)"
+		"[root] local.namespace (expand)" -> "[root] var.namespace"
+		"[root] module.apigw (close)" -> "[root] module.apigw.aws_api_gateway_account.apigw_account (expand)"
+		"[root] module.apigw (close)" -> "[root] module.apigw.aws_api_gateway_integration.redirect_integration (expand)"
+		"[root] module.apigw (close)" -> "[root] module.apigw.aws_api_gateway_integration_response.redirect_integration_response (expand)"
+		"[root] module.apigw (close)" -> "[root] module.apigw.aws_lambda_permission.lambda_permission_api_gateway (expand)"
+		"[root] module.apigw (close)" -> "[root] module.apigw.output.invoke_url (expand)"
+		"[root] module.apigw.aws_api_gateway_account.apigw_account (expand)" -> "[root] module.apigw.aws_iam_role_policy.cloudwatch (expand)"
+		"[root] module.apigw.aws_api_gateway_deployment.api_deployment (expand)" -> "[root] module.apigw.aws_api_gateway_integration.any_method_integration (expand)"
+		"[root] module.apigw.aws_api_gateway_integration.any_method_integration (expand)" -> "[root] module.apigw.aws_api_gateway_method.auth_any (expand)"
+		"[root] module.apigw.aws_api_gateway_integration.any_method_integration (expand)" -> "[root] module.apigw.data.aws_region.current (expand)"
+		"[root] module.apigw.aws_api_gateway_integration.any_method_integration (expand)" -> "[root] module.apigw.var.lambda_arn (expand)"
+		"[root] module.apigw.aws_api_gateway_integration.redirect_integration (expand)" -> "[root] module.apigw.aws_api_gateway_method.redirect_method (expand)"
+		"[root] module.apigw.aws_api_gateway_integration_response.redirect_integration_response (expand)" -> "[root] module.apigw.aws_api_gateway_method_response.redirect (expand)"
+		"[root] module.apigw.aws_api_gateway_method.auth_any (expand)" -> "[root] module.apigw.aws_api_gateway_resource.proxy (expand)"
+		"[root] module.apigw.aws_api_gateway_method.redirect_method (expand)" -> "[root] module.apigw.aws_api_gateway_rest_api.api (expand)"
+		"[root] module.apigw.aws_api_gateway_method_response.redirect (expand)" -> "[root] module.apigw.aws_api_gateway_method.redirect_method (expand)"
+		"[root] module.apigw.aws_api_gateway_resource.proxy (expand)" -> "[root] module.apigw.aws_api_gateway_rest_api.api (expand)"
+		"[root] module.apigw.aws_api_gateway_rest_api.api (expand)" -> "[root] module.apigw.var.namespace (expand)"
+		"[root] module.apigw.aws_api_gateway_rest_api.api (expand)" -> "[root] provider[\"registry.terraform.io/hashicorp/aws\"]"
+		"[root] module.apigw.aws_iam_role.cloudwatch (expand)" -> "[root] module.apigw.var.namespace (expand)"
+		"[root] module.apigw.aws_iam_role.cloudwatch (expand)" -> "[root] provider[\"registry.terraform.io/hashicorp/aws\"]"
+		"[root] module.apigw.aws_iam_role_policy.cloudwatch (expand)" -> "[root] module.apigw.aws_iam_role.cloudwatch (expand)"
+		"[root] module.apigw.aws_lambda_permission.lambda_permission_api_gateway (expand)" -> "[root] module.apigw.aws_api_gateway_rest_api.api (expand)"
+		"[root] module.apigw.aws_lambda_permission.lambda_permission_api_gateway (expand)" -> "[root] module.apigw.data.aws_caller_identity.current (expand)"
+		"[root] module.apigw.aws_lambda_permission.lambda_permission_api_gateway (expand)" -> "[root] module.apigw.data.aws_region.current (expand)"
+		"[root] module.apigw.aws_lambda_permission.lambda_permission_api_gateway (expand)" -> "[root] module.apigw.var.lambda_arn (expand)"
+		"[root] module.apigw.data.aws_caller_identity.current (expand)" -> "[root] module.apigw (expand)"
+		"[root] module.apigw.data.aws_caller_identity.current (expand)" -> "[root] provider[\"registry.terraform.io/hashicorp/aws\"]"
+		"[root] module.apigw.data.aws_region.current (expand)" -> "[root] module.apigw (expand)"
+		"[root] module.apigw.data.aws_region.current (expand)" -> "[root] provider[\"registry.terraform.io/hashicorp/aws\"]"
+		"[root] module.apigw.output.invoke_url (expand)" -> "[root] module.apigw.aws_api_gateway_deployment.api_deployment (expand)"
+		"[root] module.apigw.var.lambda_arn (expand)" -> "[root] module.apigw (expand)"
+		"[root] module.apigw.var.lambda_arn (expand)" -> "[root] module.lambda.output.lambda_arn (expand)"
+		"[root] module.apigw.var.namespace (expand)" -> "[root] local.namespace (expand)"
+		"[root] module.apigw.var.namespace (expand)" -> "[root] module.apigw (expand)"
+		"[root] module.database (close)" -> "[root] module.database.output.rds_database (expand)"
+		"[root] module.database (close)" -> "[root] module.database.output.rds_host (expand)"
+		"[root] module.database (close)" -> "[root] module.database.output.rds_port (expand)"
+		"[root] module.database.aws_rds_cluster.rds_cluster (expand)" -> "[root] module.database.data.aws_region.current (expand)"
+		"[root] module.database.aws_rds_cluster.rds_cluster (expand)" -> "[root] module.database.var.namespace (expand)"
+		"[root] module.database.aws_rds_cluster.rds_cluster (expand)" -> "[root] module.database.var.rds_password (expand)"
+		"[root] module.database.aws_rds_cluster.rds_cluster (expand)" -> "[root] module.database.var.rds_user (expand)"
+		"[root] module.database.aws_rds_cluster.rds_cluster (expand)" -> "[root] module.database.var.sg (expand)"
+		"[root] module.database.data.aws_region.current (expand)" -> "[root] module.database (expand)"
+		"[root] module.database.data.aws_region.current (expand)" -> "[root] provider[\"registry.terraform.io/hashicorp/aws\"]"
+		"[root] module.database.output.rds_database (expand)" -> "[root] module.database.aws_rds_cluster.rds_cluster (expand)"
+		"[root] module.database.output.rds_host (expand)" -> "[root] module.database.aws_rds_cluster.rds_cluster (expand)"
+		"[root] module.database.output.rds_port (expand)" -> "[root] module.database.aws_rds_cluster.rds_cluster (expand)"
+		"[root] module.database.var.namespace (expand)" -> "[root] local.namespace (expand)"
+		"[root] module.database.var.namespace (expand)" -> "[root] module.database (expand)"
+		"[root] module.database.var.rds_password (expand)" -> "[root] module.database (expand)"
+		"[root] module.database.var.rds_password (expand)" -> "[root] var.rds_password"
+		"[root] module.database.var.rds_user (expand)" -> "[root] module.database (expand)"
+		"[root] module.database.var.rds_user (expand)" -> "[root] var.rds_user"
+		"[root] module.database.var.sg (expand)" -> "[root] module.database (expand)"
+		"[root] module.database.var.sg (expand)" -> "[root] module.networking.output.sg (expand)"
+		"[root] module.lambda (close)" -> "[root] module.lambda.aws_iam_policy_attachment.lambda_iam_policy_role_attachment (expand)"
+		"[root] module.lambda (close)" -> "[root] module.lambda.output.lambda_arn (expand)"
+		"[root] module.lambda.aws_default_subnet.default_az1 (expand)" -> "[root] module.lambda.data.aws_region.current (expand)"
+		"[root] module.lambda.aws_default_subnet.default_az2 (expand)" -> "[root] module.lambda.data.aws_region.current (expand)"
+		"[root] module.lambda.aws_default_subnet.default_az3 (expand)" -> "[root] module.lambda.data.aws_region.current (expand)"
+		"[root] module.lambda.aws_iam_policy.lambda_iam_policy (expand)" -> "[root] module.lambda.data.aws_iam_policy_document.lambda_iam_policy_document (expand)"
+		"[root] module.lambda.aws_iam_policy.lambda_iam_policy (expand)" -> "[root] module.lambda.var.namespace (expand)"
+		"[root] module.lambda.aws_iam_policy_attachment.lambda_iam_policy_role_attachment (expand)" -> "[root] module.lambda.aws_iam_policy.lambda_iam_policy (expand)"
+		"[root] module.lambda.aws_iam_policy_attachment.lambda_iam_policy_role_attachment (expand)" -> "[root] module.lambda.aws_iam_role.lambda_role (expand)"
+		"[root] module.lambda.aws_iam_role.lambda_role (expand)" -> "[root] module.lambda.data.aws_iam_policy_document.lambda_assume_role_policy_document (expand)"
+		"[root] module.lambda.aws_iam_role.lambda_role (expand)" -> "[root] module.lambda.var.namespace (expand)"
+		"[root] module.lambda.aws_lambda_function.lambda_function (expand)" -> "[root] module.lambda.aws_default_subnet.default_az1 (expand)"
+		"[root] module.lambda.aws_lambda_function.lambda_function (expand)" -> "[root] module.lambda.aws_default_subnet.default_az2 (expand)"
+		"[root] module.lambda.aws_lambda_function.lambda_function (expand)" -> "[root] module.lambda.aws_default_subnet.default_az3 (expand)"
+		"[root] module.lambda.aws_lambda_function.lambda_function (expand)" -> "[root] module.lambda.aws_iam_role.lambda_role (expand)"
+		"[root] module.lambda.aws_lambda_function.lambda_function (expand)" -> "[root] module.lambda.var.rds_database (expand)"
+		"[root] module.lambda.aws_lambda_function.lambda_function (expand)" -> "[root] module.lambda.var.rds_host (expand)"
+		"[root] module.lambda.aws_lambda_function.lambda_function (expand)" -> "[root] module.lambda.var.rds_password (expand)"
+		"[root] module.lambda.aws_lambda_function.lambda_function (expand)" -> "[root] module.lambda.var.rds_port (expand)"
+		"[root] module.lambda.aws_lambda_function.lambda_function (expand)" -> "[root] module.lambda.var.rds_user (expand)"
+		"[root] module.lambda.aws_lambda_function.lambda_function (expand)" -> "[root] module.lambda.var.sg (expand)"
+		"[root] module.lambda.data.aws_iam_policy_document.lambda_assume_role_policy_document (expand)" -> "[root] module.lambda (expand)"
+		"[root] module.lambda.data.aws_iam_policy_document.lambda_assume_role_policy_document (expand)" -> "[root] provider[\"registry.terraform.io/hashicorp/aws\"]"
+		"[root] module.lambda.data.aws_iam_policy_document.lambda_iam_policy_document (expand)" -> "[root] module.lambda (expand)"
+		"[root] module.lambda.data.aws_iam_policy_document.lambda_iam_policy_document (expand)" -> "[root] provider[\"registry.terraform.io/hashicorp/aws\"]"
+		"[root] module.lambda.data.aws_region.current (expand)" -> "[root] module.lambda (expand)"
+		"[root] module.lambda.data.aws_region.current (expand)" -> "[root] provider[\"registry.terraform.io/hashicorp/aws\"]"
+		"[root] module.lambda.output.lambda_arn (expand)" -> "[root] module.lambda.aws_lambda_function.lambda_function (expand)"
+		"[root] module.lambda.var.namespace (expand)" -> "[root] local.namespace (expand)"
+		"[root] module.lambda.var.namespace (expand)" -> "[root] module.lambda (expand)"
+		"[root] module.lambda.var.rds_database (expand)" -> "[root] module.database.output.rds_database (expand)"
+		"[root] module.lambda.var.rds_database (expand)" -> "[root] module.lambda (expand)"
+		"[root] module.lambda.var.rds_host (expand)" -> "[root] module.database.output.rds_host (expand)"
+		"[root] module.lambda.var.rds_host (expand)" -> "[root] module.lambda (expand)"
+		"[root] module.lambda.var.rds_password (expand)" -> "[root] module.lambda (expand)"
+		"[root] module.lambda.var.rds_password (expand)" -> "[root] var.rds_password"
+		"[root] module.lambda.var.rds_port (expand)" -> "[root] module.database.output.rds_port (expand)"
+		"[root] module.lambda.var.rds_port (expand)" -> "[root] module.lambda (expand)"
+		"[root] module.lambda.var.rds_user (expand)" -> "[root] module.lambda (expand)"
+		"[root] module.lambda.var.rds_user (expand)" -> "[root] var.rds_user"
+		"[root] module.lambda.var.sg (expand)" -> "[root] module.lambda (expand)"
+		"[root] module.lambda.var.sg (expand)" -> "[root] module.networking.output.sg (expand)"
+		"[root] module.networking (close)" -> "[root] module.networking.data.aws_availability_zones.available (expand)"
+		"[root] module.networking (close)" -> "[root] module.networking.module.db_sg (close)"
+		"[root] module.networking (close)" -> "[root] module.networking.module.lambda_sg (close)"
+		"[root] module.networking (close)" -> "[root] module.networking.output.sg (expand)"
+		"[root] module.networking (close)" -> "[root] module.networking.var.namespace (expand)"
+		"[root] module.networking.aws_default_vpc.default (expand)" -> "[root] module.networking (expand)"
+		"[root] module.networking.aws_default_vpc.default (expand)" -> "[root] provider[\"registry.terraform.io/hashicorp/aws\"]"
+		"[root] module.networking.data.aws_availability_zones.available (expand)" -> "[root] module.networking (expand)"
+		"[root] module.networking.data.aws_availability_zones.available (expand)" -> "[root] provider[\"registry.terraform.io/hashicorp/aws\"]"
+		"[root] module.networking.module.db_sg (close)" -> "[root] module.networking.module.db_sg.output.security_group (expand)"
+		"[root] module.networking.module.db_sg (expand)" -> "[root] module.networking (expand)"
+		"[root] module.networking.module.db_sg.aws_security_group.security_group (expand)" -> "[root] module.networking.module.db_sg.local.egress_rules (expand)"
+		"[root] module.networking.module.db_sg.aws_security_group.security_group (expand)" -> "[root] module.networking.module.db_sg.local.ingress_rules (expand)"
+		"[root] module.networking.module.db_sg.aws_security_group.security_group (expand)" -> "[root] module.networking.module.db_sg.var.description (expand)"
+		"[root] module.networking.module.db_sg.aws_security_group.security_group (expand)" -> "[root] module.networking.module.db_sg.var.name (expand)"
+		"[root] module.networking.module.db_sg.aws_security_group.security_group (expand)" -> "[root] module.networking.module.db_sg.var.vpc_id (expand)"
+		"[root] module.networking.module.db_sg.local.egress_rules (expand)" -> "[root] module.networking.module.db_sg.var.egress_rules (expand)"
+		"[root] module.networking.module.db_sg.local.ingress_rules (expand)" -> "[root] module.networking.module.db_sg.var.ingress_rules (expand)"
+		"[root] module.networking.module.db_sg.output.security_group (expand)" -> "[root] module.networking.module.db_sg.aws_security_group.security_group (expand)"
+		"[root] module.networking.module.db_sg.var.description (expand)" -> "[root] module.networking.module.db_sg (expand)"
+		"[root] module.networking.module.db_sg.var.egress_rules (expand)" -> "[root] module.networking.module.db_sg (expand)"
+		"[root] module.networking.module.db_sg.var.ingress_rules (expand)" -> "[root] module.networking.module.db_sg (expand)"
+		"[root] module.networking.module.db_sg.var.ingress_rules (expand)" -> "[root] module.networking.module.lambda_sg.output.security_group (expand)"
+		"[root] module.networking.module.db_sg.var.name (expand)" -> "[root] module.networking.module.db_sg (expand)"
+		"[root] module.networking.module.db_sg.var.vpc_id (expand)" -> "[root] module.networking.aws_default_vpc.default (expand)"
+		"[root] module.networking.module.db_sg.var.vpc_id (expand)" -> "[root] module.networking.module.db_sg (expand)"
+		"[root] module.networking.module.lambda_sg (close)" -> "[root] module.networking.module.lambda_sg.output.security_group (expand)"
+		"[root] module.networking.module.lambda_sg (expand)" -> "[root] module.networking (expand)"
+		"[root] module.networking.module.lambda_sg.aws_security_group.security_group (expand)" -> "[root] module.networking.module.lambda_sg.local.egress_rules (expand)"
+		"[root] module.networking.module.lambda_sg.aws_security_group.security_group (expand)" -> "[root] module.networking.module.lambda_sg.local.ingress_rules (expand)"
+		"[root] module.networking.module.lambda_sg.aws_security_group.security_group (expand)" -> "[root] module.networking.module.lambda_sg.var.description (expand)"
+		"[root] module.networking.module.lambda_sg.aws_security_group.security_group (expand)" -> "[root] module.networking.module.lambda_sg.var.name (expand)"
+		"[root] module.networking.module.lambda_sg.aws_security_group.security_group (expand)" -> "[root] module.networking.module.lambda_sg.var.vpc_id (expand)"
+		"[root] module.networking.module.lambda_sg.local.egress_rules (expand)" -> "[root] module.networking.module.lambda_sg.var.egress_rules (expand)"
+		"[root] module.networking.module.lambda_sg.local.ingress_rules (expand)" -> "[root] module.networking.module.lambda_sg.var.ingress_rules (expand)"
+		"[root] module.networking.module.lambda_sg.output.security_group (expand)" -> "[root] module.networking.module.lambda_sg.aws_security_group.security_group (expand)"
+		"[root] module.networking.module.lambda_sg.var.description (expand)" -> "[root] module.networking.module.lambda_sg (expand)"
+		"[root] module.networking.module.lambda_sg.var.egress_rules (expand)" -> "[root] module.networking.module.lambda_sg (expand)"
+		"[root] module.networking.module.lambda_sg.var.ingress_rules (expand)" -> "[root] module.networking.module.lambda_sg (expand)"
+		"[root] module.networking.module.lambda_sg.var.name (expand)" -> "[root] module.networking.module.lambda_sg (expand)"
+		"[root] module.networking.module.lambda_sg.var.vpc_id (expand)" -> "[root] module.networking.aws_default_vpc.default (expand)"
+		"[root] module.networking.module.lambda_sg.var.vpc_id (expand)" -> "[root] module.networking.module.lambda_sg (expand)"
+		"[root] module.networking.output.sg (expand)" -> "[root] module.networking.module.db_sg.output.security_group (expand)"
+		"[root] module.networking.var.namespace (expand)" -> "[root] local.namespace (expand)"
+		"[root] module.networking.var.namespace (expand)" -> "[root] module.networking (expand)"
+		"[root] output.address (expand)" -> "[root] module.apigw.output.invoke_url (expand)"
+		"[root] provider[\"registry.terraform.io/hashicorp/aws\"] (close)" -> "[root] module.apigw.aws_api_gateway_account.apigw_account (expand)"
+		"[root] provider[\"registry.terraform.io/hashicorp/aws\"] (close)" -> "[root] module.apigw.aws_api_gateway_deployment.api_deployment (expand)"
+		"[root] provider[\"registry.terraform.io/hashicorp/aws\"] (close)" -> "[root] module.apigw.aws_api_gateway_integration.redirect_integration (expand)"
+		"[root] provider[\"registry.terraform.io/hashicorp/aws\"] (close)" -> "[root] module.apigw.aws_api_gateway_integration_response.redirect_integration_response (expand)"
+		"[root] provider[\"registry.terraform.io/hashicorp/aws\"] (close)" -> "[root] module.apigw.aws_lambda_permission.lambda_permission_api_gateway (expand)"
+		"[root] provider[\"registry.terraform.io/hashicorp/aws\"] (close)" -> "[root] module.lambda.aws_iam_policy_attachment.lambda_iam_policy_role_attachment (expand)"
+		"[root] provider[\"registry.terraform.io/hashicorp/aws\"] (close)" -> "[root] module.networking.data.aws_availability_zones.available (expand)"
+		"[root] provider[\"registry.terraform.io/hashicorp/random\"] (close)" -> "[root] random_string.rand (expand)"
+		"[root] random_string.rand (expand)" -> "[root] provider[\"registry.terraform.io/hashicorp/random\"]"
+		"[root] root" -> "[root] module.apigw (close)"
+		"[root] root" -> "[root] module.database (close)"
+		"[root] root" -> "[root] module.lambda (close)"
+		"[root] root" -> "[root] module.networking (close)"
+		"[root] root" -> "[root] output.address (expand)"
+		"[root] root" -> "[root] provider[\"registry.terraform.io/hashicorp/aws\"] (close)"
+		"[root] root" -> "[root] provider[\"registry.terraform.io/hashicorp/random\"] (close)"
+	}
+}
+
